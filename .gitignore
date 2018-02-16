@@ -1,6 +1,6 @@
 */bin
 */obj
 *.user-settings.xml
-platform/
+platforms/
 plugins/
 node_modules/
