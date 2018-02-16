@@ -1,0 +1,31 @@
+<div id="loginViewID" data-role="view" data-title="Authentication" data-layout="login-nonav" data-model="app.loginView" data-show="app.loginView.onShow" data-after-show="app.loginView.afterShow" data-before-show="app.loginView.beforeShow">
+    <div class="headerLogoSSS"><img src="images/sss-logo.png"></div> 
+    <div class="signin-view">
+        <form id="loginForm">
+            
+            <div class="fieldsWrapper">
+            	<div class="fieldsBackground">
+                  <div class="logoLock"><img src="images/lock-login.png"></div>  
+                    <ul data-role="listview" data-style="inset">
+                        <li>
+                            <span class="lblUsername"><label for="userName" class="required" loc-text="login.userName"><span class="fieldTitle">User Name</span></label></span>
+                            <input type="text" id="userName" data-bind="value: userName" class="k-textbox" placeholder="Enter user name"  required validationMessage="Enter {0}" autofocus>
+                        </li>
+                        <li>
+                            <span class="lblPassword"><label for="password" class="required"  loc-text="login.password"><span class="fieldTitle">Password</span></label></span>
+                            <input type="password" id="password" data-bind="value: password" class="k-textbox"  placeholder="Enter password" required validationMessage="Enter {0}" autofocus>
+                        </li>
+                    </ul>
+                </div>
+            	<div class="button-group button-group-vertical">
+                	<a data-role="button" class="primary" ata-click-on="down"  loc-text="login.signIn" data-click="app.loginView.signIn">Sign In</a>
+           		</div>
+                <li class="status">
+                </li>
+    		</div>
+            <div class="footerLogo"><img src="images/logoxecom.png"></div>  
+        </form>
+         
+   </div>
+   
+</div>

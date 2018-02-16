@@ -1,0 +1,662 @@
+footer{width:101%;}
+.selectPredefined{width:331px !important}
+
+.mandatory{ border: 1px solid #ff0000 !important;
+  -webkit-border-radius: 6px !important;
+  border-radius: 6px !important;}
+.errorBorder{border: 1px solid #ff0000 !important;
+  -webkit-border-radius: 6px !important;
+  border-radius: 6px !important;}
+
+/*input:required, select:required {
+  display: inline-block !important;
+  -webkit-box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  box-sizing: content-box !important;
+  border: 1px solid #ff0000 !important;
+  -webkit-border-radius: 6px !important;
+  border-radius: 6px !important;
+  -o-text-overflow: clip !important;
+  text-overflow: clip !important;
+  background: rgba(252,252,252,1) !important;
+  -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2)  !important;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.66)  !important;
+  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) !important;
+  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) !important;
+  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) !important;
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) !important;
+}
+input:valid, select:valid {
+  display: inline-block !important;
+  -webkit-box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  box-sizing: content-box !important;
+  border: 1px solid #129b2e !important;
+  -webkit-border-radius: 6px !important;
+  border-radius: 6px !important;
+  -o-text-overflow: clip !important;
+  text-overflow: clip !important;
+  background: rgba(252,252,252,1) !important;
+  -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+  box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2)  !important;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.66)  !important;
+  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) !important;
+  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) !important;
+  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) !important;
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) !important;
+}
+input, select {
+    display: inline-block !important;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    width: 300px !important;
+    padding: 10px 20px !important;
+    border: 1px solid #94bfce !important;
+    -webkit-border-radius: 4px !important;
+    border-radius: 4px !important;
+    font: normal 16px/normal Verdana, Geneva, sans-serif !important;
+    color: rgba(0,142,198,1) !important;
+    -o-text-overflow: clip !important;
+    text-overflow: clip !important;
+    background: rgba(252,252,252,1) !important;
+    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) !important;
+    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) !important;
+    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) !important;
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) !important;
+    position: relative !important;
+}*/
+
+.redLabel{color: red !important;};
+
+.readOnly{
+    background-color: #cfd6dc  !important;
+    color: black !important;
+}
+.uomLabel{font-size:10px !important; color: #4f7388;}
+.editor {
+    width: 80% !important;
+    height: 34px !important;
+}
+.numEditor {
+    width: 80% !important;
+    height: 34px !important;
+}
+.ddEditor {
+    width: 80% !important;
+    height: 34px !important;
+}
+.labelMIAtributeValues{
+        color: rgba(0,142,198,1) !important;
+}
+.expandButtonContainer{
+    float: right;width: 100%;text-align: right;
+}
+.collapseButtonContainer{
+    float: right;width: 100%;text-align: right;
+}
+.panel {background-color: #C8D4DA; border-style: solid; border-width: 1px; margin:4px;}
+.specsRow {    
+    background: #e4e8e8;
+    margin: 0 0 10px 4px;
+    width: 99%;
+    padding: 10px;
+    float: left;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 6px;
+    -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 6px;
+    box-shadow: rgba(1, 0, 0, 0.35) 0px 1px 6px 1px;
+  }
+
+.captionRow {
+    width: 100%;
+    padding:3px;
+    line-height: 30px;
+    text-align: center;
+}
+.scrollpopupDiv{overflow-x: hidden; overflow-y:auto;}
+.specsCaption {
+   font-size: 1.2em;
+}
+
+.topActionRow {
+    width: 100%;
+    padding:5px;
+}
+.topActionRow:after, .row:after {
+    content:"\a";
+    white-space: pre;
+}
+.specsCol1 {
+    padding-left:10px;
+    float:left;
+    width:40%;    
+}
+.specsCol1 {padding-left:10px;float:left;width:35%;}
+
+ .divTableGird
+    {
+        display:table;
+        width:97%;
+        background-color:#eee;
+        border:1px solid  #666666;
+        border-spacing:5px;/*cellspacing:poor IE support for  this*/
+       /* border-collapse:separate;*/
+    }
+
+    .divRow
+    {
+    display:table-row;
+	width: 25%;
+    text-align: left;
+    padding:10px 10px 10px 13px;
+    }
+
+  
+.specsCol2 {float:left; width:33%; margin:0 0 7px 0px;}
+.specsCol3 {float:left; width:31%;}
+
+
+.paddingLeft15{ padding-left:15px;}
+.paddingTop15{ padding-top:15px;}
+.specsLeft{width:20em !important;}
+.specsContainer {padding:5px 10px 30px 10px; margin:0px;}
+.ContainerScr {padding:5px 10px 30px 10px; margin:0px; height:50vh !important;}
+.ContainerAbort {padding:5px 10px 30px 10px; margin:0px; color:black;overflow: auto; float: left; width: 100%;}
+.footer{ bottom:0;width:101%;}
+.btnSpecsRow {
+    /*height: 30px;
+    line-height: 10px;*/
+}
+.surveyBackBtn{
+    float: right;
+    right: 50px;
+    top: 2px;
+}
+.expandButton{
+    background: url('../images/ExpandButtonSmall.jpg');
+    height: 40px;
+    width: 40px;
+}
+.specsFootDivCol, .specsFootDivColSelected {
+    float: left;
+    width: 33%;
+    padding: 1px;
+    text-align: center;
+    background-color:#e2e2e2 !important;
+   	border-color:#9d9d9d;
+    border-style: solid;
+    border-width: 1px;
+    height: 74px;
+}
+.km-flat .km-button {
+    padding: .5em .8em;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    height: auto;
+}
+.km-view-title, .km-dialog-title {
+    font-size:19px;
+    line-height:2.3em;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    text-align: center;
+    visibility: visible;
+    background-color: #00b0f0;
+    color: #FFFFFF;
+    font-weight: bold;
+    padding:5px 0 0 0px;
+}
+.km-flat .km-popup.km-pane .km-header {
+    padding: 0 0px;
+    /* margin: -1px -6px 2px; */
+    /* width: 299px; */
+    border-radius: 3px 3px 0 0;
+    -webkit-margin-collapse:separate;
+}
+.specsFootGroupCol{
+    float:left;
+    padding:1px;
+    text-align: center;
+    width: 50% !important;
+}
+.specsFootDivColSelected {background-color:#e2e2e2 !important;}
+.clear {clear:both;}
+.btnFullWidth {width: 100%;}
+.btnDropDown {
+   width: 95%;
+   height: 58px;
+   background-color: #5B6C86 !important;
+   margin: 3px;
+}
+.btnSpecsAnswer {
+    width: 125px;
+    height: 42px;
+    background-color: #5B6C86 !important;
+    margin: 3px;
+}
+
+.btnDrawer {
+   	width: 95%;
+   	height: 40px;   
+  	background-color: #545454 !important;
+   	margin: 3px;
+}
+
+.btnDrawerSelected {
+   	width:95%;
+   	height:40px;   
+  	background-color:#79BB5D !important;
+   	margin: 3px;
+}
+.btnSpecsSetWidget {
+   	width: 95%;
+   	height: 40px;   
+  	background-color:#545454  !important;
+   	margin: 3px;
+}
+.selected {
+  	background-color: #79BB5D !important;
+}
+option:disabled{
+    background-color: #d0cecf !important;
+    color: red !important;
+}
+.headerCollapsible {
+    padding-left: 15px;
+}
+.buildNameColDiv {
+    float: left;
+    width: 15%;
+    padding: 5px 10px 5px 1px;
+    margin-top: 5px;
+}
+.noOfSetsColRight {
+    float:left;
+    width:10%;
+    padding:5px 10px 5px 30px;
+    margin-top:5px;
+}
+.productTypeColPdDiv {
+    float: left;
+    width: 15%;
+    padding: 5px 10px 5px 15px;
+    margin-top: 5px;
+}
+.productPdDiv {
+    padding:10px 0 15px 0px;
+}
+.productLeftDiv {
+    padding:10px 0 15px 10px;
+}
+
+.oppGrpHdrColTxtdiv {
+    float:left;
+    width:8%;
+    margin-top: 0px;
+    margin-bottom: 9px;
+    padding:0px;
+    text-align:left;
+}
+.oppGrpHdrColTxtdivSet {
+    float:left;
+    width:14%;
+    margin-top: 6px;
+    margin-bottom: 9px;
+    padding:0px;
+    text-align:left;
+}
+
+
+.km-collapsible-header {background-color: #A9CDEA!important;}
+
+/* specs page */
+ .km-root .left-btn {
+    position: absolute;
+    z-index: 9999;
+    top: 0em;
+    left: 0em;
+    padding-right: 0;
+    padding-left: 0;
+    width: 3em;
+    /* line-height: 2em; */
+    border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border: 1px solid rgba(255,255,255,.8);
+    background-color: #2D485F;
+    color: #fff;
+    box-shadow: 0 0 .5em #000;
+    -webkit-box-shadow: 0 0 .6em #060404;
+    /* height: 3em; */
+    height: 35px;
+    margin: 5px 0 0 7px;
+   border-radius: 5px;
+    }
+    .km-root .right-btn {
+        position: absolute;
+        z-index: 9999;
+        top: 0em;
+        right: 0em;
+        padding-right: 0;
+        padding-left: 0;
+        width: 3em;
+        border-radius: 1em;
+        -webkit-border-radius: 1em;
+        border: 1px solid rgba(255,255,255,.8);
+        background-color: #2D485F;
+        color: #fff;
+        box-shadow: 0 0 .5em #000;
+        -webkit-box-shadow: 0 0 .6em #060404;
+         height: 35px;
+         margin: 5px 7px 0 0px;
+		 border-radius: 5px;
+    }
+    .km-wp-light .km-button.left-btn .right-btn
+    {
+        background: rgba(0,0,0,.8);
+        text-align: center;
+    }
+
+    .km-root .left-btn .right-btn .km-icon.km-notext
+    {
+        display: block;
+        margin: 1em auto;
+    }
+
+    .km-ios #left-drawer .km-content, .km-ios7 #left-drawer .km-content, .km-android #left-drawer .km-content, .km-blackberry #left-drawer .km-content,
+    .km-ios #left-drawer .km-list > li, .km-ios7 #left-drawer .km-list > li, .km-android #left-drawer .km-list > li, .km-blackberry #left-drawer .km-list > li,
+    .km-ios #left-drawer .km-listview-link > .km-icon, .km-ios7 #left-drawer .km-listview-link > .km-icon, .km-android #left-drawer .km-listview-link > .km-icon, .km-blackberry #left-drawer .km-listview-link > .km-icon,
+    .km-ios #left-drawer .km-list li > .km-icon, .km-ios7 #left-drawer .km-list li > .km-icon, .km-android #left-drawer .km-list li > .km-icon, .km-blackberry #left-drawer .km-list li > .km-icon,
+    #right-drawer .km-content
+    {background-color: #4e4e4e; color: #fff;
+    }
+
+    .km-camera:before, .km-camera:after { content: "\E0D0"; }
+    .km-printer:before, .km-printer:after { content: "\E07E"; }
+    .km-comments:before, .km-comments:after { content: "\E093"; }
+
+    .leftWidgetWrapper {
+        padding-top: 5px;
+    }
+    .leftWidgetRow{
+        padding: 0px !important;
+    }
+	
+	.specsFooter {
+    background: #ffffff;
+}
+.leftDivPadding{ padding:7px 0 7px 19px;float:left;}
+.leftDivPdBuilding{ margin:0px; padding: 9px 0 8px 14px;}
+.leftDivGroup{ margin:0px; padding:5px 0 10px 10px;}
+
+.photoMandatory{
+    border: 3px solid #d16262 !important;
+}
+    /* End- Specs page */
+
+.aboutlogo{margin:0px auto; width:50%; margin-bottom:10px;}
+.text-center{text-align: center;}
+
+ @media only screen and (min-width: 480px) and (max-width:768px) {
+.colMd{width:135px !important; float:left;}
+.newHeighBtn{ height:870px;}
+.setupViewHeight{height:920px;}
+.rTable {display:table; width:98%; margin:1.6em 0 0 0px;}
+.lblSearchLeft{ margin:9px 10px 0 1px !important; float:left !important; padding:0px;}
+.fieldsWrapperbig{ margin:0px auto; padding:0px; width:470px;}    
+#kendoUiMobileApp .km-content li label:not(.km-label-above) > span:not(.km-widget), #kendoUiMobileApp .editableListItem > span {
+display: inline-block; word-break: break-word;width: 35%; padding-right: 10px;}
+.rTable {display:table; width:100%; margin:1.6em 0 0 0px;}
+.footerLogo {
+    bottom: 0;
+    margin: 24em 17px 0 0px;
+    float: right;
+}
+.marginBottom{bottom:42%;position: fixed;}
+.btnCloseCenter {
+    width:11%;
+    margin: 0px auto;
+}
+  
+.contentInternalDiv{
+    float: left;
+    width: 32%;
+    border: 1px solid #545454;
+    margin-left: 3px;
+    margin-right: 13px;
+}
+.contentInternalDivlast{
+    float: left;
+    width: 29%;
+    border: 1px solid #545454;
+    margin-left: 3px;
+    margin-right:0px;
+}
+.km-list input[type=checkbox], .km-list input[type=radio] {
+    right:1.1em;
+}
+.lblLeft {
+    float: left !important;
+    width:22%;
+    font-size: 17px;
+    padding-left: 5px;
+    line-height:43px !important;
+}
+.lblProjectName {
+    float: left !important;
+    width:42%;
+    font-size: 17px;
+    padding-left: 5px;
+    overflow-wrap: break-word;
+    line-height:43px !important;
+}
+.noOfSetsColLable{width:15% !important;}
+.buildNameColDiv {float: left; width:16% !important; padding: 5px 10px 5px 1px; margin-top: 5px;}
+.noOfUnitsColLable{float:left;width:17% !important; text-align:left;}  
+.smallBtn {float:left;color:white;margin:4px 6px 0 6px !important;width:19% !important;}
+ .smallHomeButton{background:rgba(0, 0, 0, 0) linear-gradient(#00b0f0, #00b0f0) repeat scroll 0 0 !important; border-radius:5px; border:1px solid #fffffd !important;
+-moz-box-shadow: 0px 0px 4px #000000;
+-webkit-box-shadow: 0px 0px 4px #000000;
+box-shadow: 0px 0px 4px #000000; padding:10px 10px 10px 10px !important; right:-19px;}
+.floatRight {float: right; margin: 0 9px 0 0px;}
+.leftDivPdBuilding { margin: 0px; padding: 5px 0 0 14px;}
+.smallHomeButton:hover{ background:#00b0f0 !important;}  
+.oppNameCol {float: left;width:30% !important;margin-top: 5px;padding: 4px 10px 5px 29px !important;color: #000000;}
+#ggeSpace{ width:auto !important;}
+.progressCol {float: none; width:30%; margin-top: -6px; padding:0px !important;}
+/*Removing !importnant tag from float property in progressCol class by Pawan on 12july*/
+.noOfUnitsCol {float: left;width:13% !important;padding: 8px 1px 5px 5px;margin-top: 5px;text-align: right;}
+.noOfSetsCol {float: left;width:8.5%;padding:5px 1px 5px 5px;margin-top: 5px;text-align: right;}
+.noOfSetsColPro {float: left;width:6% !important;padding:5px 1px 5px 5px;margin-top: 5px;text-align: right;}
+.noOfUnitsPro {float: left;width:16% !important;padding: 8px 1px 5px 5px;margin-top: 5px;text-align: right;}
+.percColLable {float: left;width: 20%;text-align: left;}
+.percCol {float: left;width:22%;padding:5px 0px 5px 5px;margin-top: 5px;text-align: right;} 
+.percColProject  {float: left;width:23% !important;padding:5px 0px 5px 5px;margin-top: 5px;text-align: right;} 
+.top-padding{margin-top:8px;}  
+.percColDiv {float: left;width:17%;padding:0px 0px 5px 5px;margin-top: 5px;text-align: right;}     
+.grapLogo{margin:0px 0 0 9em; position: relative; top:2px;}
+.smallButtonFore{float:left;width:5%; color:white;margin:2px 5px 0 5px;}
+.specsCol1 {padding-left:10px;float:left;width:25%;}
+.specsCol2 {float:left; width:40%; margin:0 0 7px 0px;}
+.specsCol3 {float: left;width:35%;padding-left: 10px;}
+.mainBgDownload{ background-color:#FFFFFF; width:969px; float:left; border-radius: 5px;padding:0px 0 18px 0px; margin:0px 0 0 -10px;}
+.widthUnit{width:14%;}
+.widthGroupSet {width:10%;}
+.widthGroupComplete{width:17%;} 
+
+.divTable{width:97.5%;margin:0 12px 0 9px; background-color:#FFFFFF;text-align: left;}
+.km-popup-overlay {
+ top:20% !important;
+}
+.oppNoCol {
+    float: left;
+    width:28%;
+    padding: 4px 10px 5px 10px;
+    margin-top: 5px;
+    color: #000000;
+}
+.helpimgDiv {
+    width:504px !important;
+    margin:0 0 0 0em !important;
+}
+
+.surveyBackBtn {
+    float: right;
+    right: 50px;
+    top:0px;
+}
+.specsRow {    
+    background: #e4e8e8;
+    margin: 0 0 10px 4px;
+    width:99%;
+    padding: 10px;
+    float: left;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 6px;
+    -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 6px;
+    box-shadow: rgba(1, 0, 0, 0.35) 0px 1px 6px 1px;
+  }
+
+
+.smallButton {
+    float: left;
+    width: 6%;
+    color: white;
+    margin: 2px 3px 0 3px;
+}
+
+.smallButtonFore {
+    float: left !important;
+    width: 6% !important;
+    color: white;
+    margin: 2px 5px 0 5px;
+}
+ }
+
+@media screen and ( min-width: 1024px ) {
+.specsCol2 {float:left; width:40%; margin:0 0 7px 0px;}
+.specsCol3 {width: 25%; float: right;}
+.leftBtnDiv{margin: 0 17px 0 1em; float: right;}
+
+}
+
+@media screen and ( max-width: 700px ) {
+.smallButton {
+    float: left;
+    width: 6%;
+    color: white;
+    margin: 2px 7px 0 7px;
+}
+
+
+
+.oppNameCol {
+    float: left;
+    width:18% !important;
+    margin-top: 5px;
+    padding: 4px 10px 5px 29px !important;
+    color: #000000;
+    overflow-wrap: break-word;
+}
+
+.buildNameColDiv {
+    float: left;
+    width: 18% !important;
+    padding: 5px 10px 5px 1px;
+    margin-top: 5px;
+}
+
+.percCol {
+    float: left;
+    width: 17%;
+    padding: 0px 0px 5px 5px;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.divTable {
+    width: 97.5%;
+    margin: 0 12px 0 7px;
+    background-color: #FFFFFF;
+    text-align: left;
+}
+.smallButtonFore {
+    float: left !important;
+    width: 6% !important;
+    color: white;
+    margin: 2px 8px 0 8px;
+}
+
+.productTypeColLableSet {
+    width: 19%;
+    float: left;
+}
+
+.smallsurveyButton{background:rgba(0, 0, 0, 0) linear-gradient(#00b0f0, #00b0f0) repeat scroll 0 0 !important; border-radius:5px; border:0px solid #fffffd !important;
+-moz-box-shadow: 0px 0px 4px #000000;
+-webkit-box-shadow: 0px 0px 4px #000000;
+box-shadow: 0px 0px 4px #000000; padding:10px 10px 10px 10px !important; margin:0 4px 0 4px;}
+.smallsurveyButton:hover{ background:#00b0f0 !important;}
+
+.ddEditor {
+    width: 164px !important;
+}
+
+.colMd {
+    width:5px !important;
+    float: left;
+}
+.aboutlogo {
+    margin: 0px auto;
+    width: 72%;
+    margin-bottom: 10px;
+}
+.editor {
+    width:142px !important;
+}
+.helpImg {
+    width: 510px;
+    height: 400px;
+    margin:0 0 10px -4em;
+    float: left;
+    border: 1px solid #333333;
+}
+
+.helpimgDiv {
+    width:499px !important;
+    margin:0 0 0 4em !important;
+}
+}
+.applyToAllCheckbox{
+    -webkit-box-shadow: none !important;
+    width: 20px !important;
+    height: 20px;
+}
+.applyToAllText{
+        color: #83878a;
+}
+/* button icons */
+.km-expand:after, .km-expand:before {
+    content: "\e012";
+}
+.km-collapse:after, .km-collapse:before {
+    content: "\e011";
+}
+.center{
+    text-align:center;
+}
+.helpTextDivInline{
+    padding-bottom: 5px;
+}
+.helpTextInline{
+        color: #0a91b2;
+}
+/* button icons */
+

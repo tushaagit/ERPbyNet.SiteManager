@@ -1,0 +1,50 @@
+<div id="dbInitViewID" data-role="view" data-title="Database initilization" data-layout="main-nonav" data-model="app.dbInitView" data-show="app.dbInitView.onShow" data-after-show="app.dbInitView.afterShow" data-before-show="app.dbInitView.beforeShow">
+    <div class="setup-view setupViewHeight">
+       <!-- <div class="pageHeaderInner">
+            <div class="pullLeft"><div class="headerLLInner"><img src="images/logo.jpg" /></div></div>
+            <div class="pullRight"><div class="headerLRInner"><img src="images/logo-xecom.png" /></div></div>
+        </div> -->
+    	<h3 data-bind="html: title"></h3>
+        <form id="setupForm">
+            <ul data-role="listview" data-style="inset">
+                <li>
+                	<div>
+                		<label id="setupNotificationBoxDBInit"></label>                        
+                	</div>
+                    <div class="loaderImgDiv">
+                        <img id="imgdbInitLoader" src="images/spin.gif" alt="Loading...." class="disNone" >                        
+                    </div>
+                    <div>
+
+                        <div data-role="modalview" id="dialog" class="previewPopOver" style="vertical-align: top !important; height:220px !important; background-color:#FFFFFF !important;float:left; padding:10px; border-radius:10px;">
+    <h3 loc-text="dbInitView.eraseDataConfirmMsg">All configuration data will be erased. Do you want to continue?</h3>
+    <div class="row">
+        <div class="col-sm-8">
+            <h4 loc-text="dbInitView.eraseYesNoMsg">Do you want to erase data?</h4>
+        </div>
+        <div class="col-sm-4">
+            <ul data-role="buttongroup" id="buttonYesNo" data-index="1" class="k-primary">
+                <li data-icon="yes">Yes</li>
+                <li data-icon="no">No</li>
+            </ul> 
+            <a data-role="button" class="floatR km-buttompopup primary" id="btnDBSetupConfirm" loc-text="dbInitView.nextBtn" data-click="app.dbInitView.confirmation">Next</a>
+        </div>
+       
+    </div>
+    
+    
+        </div>  
+
+                </li>
+            </ul>
+
+
+        </form>
+        
+	</div>
+    <div class="btnCloseCenter">
+        <div class="marginBottom">
+               			<a data-role="button" class="primary" id="btnDBSetupClose" data-click-on="down" loc-text="dbInitView.close" data-click="app.dbInitView.close" >Closee</a>
+                     </div></div>
+
+</div>

@@ -1,0 +1,80 @@
+<div id="projectViewID" data-role="view" data-title="Project" data-layout="main" data-model="app.projectView" data-show="app.projectView.onShow"
+    data-after-show="app.projectView.afterShow" data-before-show="app.projectView.beforeShow">
+    <!-- START_CUSTOM_CODE_projectView -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+    <div class="groupHeader-view">
+        <div class="divTable">
+            <div id="projectForm" class="rTable">
+                <div class="rTableRow">
+                    <div class="rTableHeadLeft"><label id="lblCapProjectName" class="lblColorWhite" loc-text="projectView.projectCap">Project</label></div>
+                    <div class="rTableHead"> <label id="lblProjectName" class="lblColorWhite"><h3>Project</h3></label>
+                        <a id="projNotesSelected" 
+                            class="floatRT" data-role="button" data-rel="popover" data-align="right" href="#proj-popover-notes"
+                            data-animated="true" data-icon="notes"></a><br/>
+                        <div data-role="popover" data-close="app.projectView.onNotesClose" id="proj-popover-notes"
+                            data-popup='{"height": "25em", "width": "35em"}'>
+                            <div data-role="view" data-title="Notes">
+                                <h5 class="noteTitel"><strong loc-text="projectView.notes">Notes</strong></h5>
+                                <div class="rTableRow">
+                                    <div class="rTableCell"> <textarea id="txtProjNotes" cols="30" rows="3" class="popNotes"></textarea> </div>
+                                </div>
+                                <div class="rTableRow">
+                                    <div class="rTableCell"> <a data-role="button" data-click="app.projectView.closeParentPopover" loc-text="projectView.save">Save</a>                                        <a data-role="button" data-click="app.buildingView.closeNotes" loc-text="projectView.close">Close</a>                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rTableRow">
+                    <div class="rTableCell"><label id="lblCapProjectAddress" loc-text="projectView.addressCap">Address:</label></div>
+                    <div class="rTableCell"><label id="lblProjectAddress">Address</label></div>
+                </div>
+                <div class="rTableRow">
+                    <div class="rTableCell"><label id="lblCalProjectPerComplete" loc-text="projectView.completeCap">% Complete:</label></div>
+                    <div class="rTableCell"><label id="lblProjectPerComplete">0%</label></div>
+                </div>
+            </div>
+        </div>
+        <div class="divTable top-margin">
+            <table class="tableGird">
+                <tr>
+                    <td>
+                        <div class="buildNameCol leftDivPadding"><label loc-text="projectView.buildingCol">Building</label></div>
+                        <div class="noOfSetsColLable leftDivPadding"><label loc-text="projectView.noOfSetsCol"># Sets</label></div>
+                        <div class="noOfUnitsColLable leftDivPadding"><label loc-text="projectView.noOfUnitsCol"># Units</label></div>
+                        <div class="percColLable leftDivPadding"><label loc-text="projectView.perCompCol">% Complete</label></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="buildingsList" class="padding10 alt-list-bg"> </div>
+                        <script type="text/x-kendo-tmpl" id="tmplBuilding">
+                            <div class="buildNameCol buildNameColDiv"><label>#: BuildingName #</label></div>
+                            <div class="noOfSetsCol noOfSetsColPro"><label>#: NoOfSets #</label></div>
+                            <div class="noOfUnitsCol noOfUnitsPro"><label>#: NoOfUnits #</label></div>
+                            <div class="percCol percColProject"><label>#: PercentComplete #%</label></div>
+                            <div class="floatRight">
+                                <div class="smallBtn smallBtnProject hidebtn">
+                                    <a class="smallHomeButton" data-role="button" 
+                                        data-icon="edit" data-bulidingid="#: BuildingID #" data-projectid="#: ProjectID #"></a>
+                                </div>
+                                <div class="smallBtn smallBtnProject">
+                                    <a class="smallHomeButton" data-role="button" 
+                                        data-icon="details" data-bulidingid="#: BuildingID #" data-projectid="#: ProjectID #"></a>
+                                </div>
+                                <div class="smallBtn smallBtnProject">
+                                    <a class="smallHomeButton" data-role="button" id="#: 'imgs_' + RowGUID #" 
+                                        data-icon="camera" imggallery="true" data-rowguid="#: RowGUID #" data-buildingname="#: BuildingName #"></a>
+                                </div>
+                                <div class="smallBtn smallBtnProject">
+                                    <a class="smallHomeButton" data-role="button" id="#: 'vids_' + RowGUID #" data-icon="videocamera" vidgallery="true" data-rowguid="#: RowGUID #"  data-buildingname="#: BuildingName #"></a></div>
+                            </div>
+                        </script>
+                        <div class="smallButtonLg displaynone"><a class="smallHomeButton" data-role="button" data-click="app.projectView.navigateToAddBuilding" loc-text="projectView.addNewBuilding" data-icon="add">Add New Building</a></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+<!-- END_CUSTOM_CODE_donloadProjectsView -->
+</div>

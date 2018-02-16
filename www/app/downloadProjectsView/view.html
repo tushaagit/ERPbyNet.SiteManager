@@ -1,0 +1,46 @@
+<div id="downloadProjectsViewID" data-role="view" data-title="Download Projects" data-layout="main" data-model="app.downloadProjectsView" data-show="app.downloadProjectsView.onShow"
+    data-after-show="app.downloadProjectsView.afterShow" data-before-show="app.downloadProjectsView.beforeShow">
+    <!-- START_CUSTOM_CODE_donloadProjectsView -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+    <div class="groupHeader-view">
+        <h3 data-bind="html: title"></h3>
+        <div>
+            <form id="downloadProjectsForm">
+                <ul data-role="listview" data-style="inset">
+                    <li>
+                        <div class="mainBgDownload">
+                            <div class="colMd">&nbsp;</div>
+                            <div class="lblSearchLeft"> <label for="searchText" class="required" data-i18n="downloadProkect.search" loc-text="downloadProjectsView.searchTextName">Search Text</label>                                </div>
+                            <div class="lblSearchLeftMiddle"> <input type="text" tabindex="0" id="searchText" data-bind="value: searchText" required validationMessage=""
+                                    autofocus> </div>
+                            <div class="lblSearchRight"> <a data-role="button" class="primary" data-click-on="down" tabindex="1" data-i18n="downloadProject.search"
+                                    data-click="app.downloadProjectsView.search" loc-text="downloadProjectsView.search">Search</a>                                </div>
+                        </div>
+                    </li>
+                </ul>
+                <div>
+                    <div class="demo-section k-content wide">
+                        <div>
+                            <h3 loc-text="downloadProjectsView.listOfOpportunities">List of opportunities</h3> </div>
+                        <dl>
+                            <div id="downlodProjectlist" class="alt-list-bg"></div>
+                        </dl>
+                    </div>
+                    <div> </div>
+                    <div> </div>
+<div class="btnDownload"><a data-role="button" class="primary" data-click-on="down" data-i18n="downloadProject.downloadSelected"
+data-click="app.downloadProjectsView.downloadSelected" tabindex="3" loc-text="downloadProjectsView.download">Download</a></div>
+                </div>
+                <script type="text/x-kendo-tmpl" id="downlodProjectTemplate"> 
+                    <dt style="display:none;"><label class="fontSize17">#:ProjectID#</label></dt>
+                    <dd class="lblLeftWidth"><label class="fontSize17">#:ProjectNo#</label></dd>                    
+                    <dd class="lblProjectName"><label class="fontSize17">#:ProjectName#</label></dd>
+                    <dd class="lblLeft"><select class="selectDropDown selectDropDownwidth" projID="#:ProjectID#" onchange="app.downloadProjectsView.changeSurveyType(this)" id="surveyTypeSelect"></select></dd>
+                    <!--<input type="checkbox" data-role="switch"  name="items" data-bind="checked: items" value="#:ProjectID#"></input>-->
+                    <dd circle="yes" class="circleGrey new" projectID="#:ProjectID#"></dd>
+                </script>
+            </form>
+        </div>
+        <!-- END_CUSTOM_CODE_donloadProjectsView -->
+    </div>
+</div>

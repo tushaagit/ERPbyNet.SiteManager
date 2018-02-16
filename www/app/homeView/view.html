@@ -1,0 +1,81 @@
+<div id="homeViewID" data-role="view" data-title="Home View" class="homeView" data-layout="main" data-model="app.homeView" data-show="app.homeView.onShow" data-after-show="app.homeView.afterShow" data-before-show="app.homeView.beforeShow">
+    <!-- START_CUSTOM_CODE_homeView -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+    
+    <div class="">          
+
+    <section id="content" class="contentHomeView HomeViewBottom">
+        
+        <h3 loc-text="homeView.ProjectsList">Projects</h3>
+        <!-- Main content -->
+        <div id="projectsList" class="alt-list-bg leftrightPd ">
+        </div>  
+        <div></div>
+        <div></div>    
+
+    <div data-role="popover" id="popover-Prompt" data-popup='{"height": "95%", "width": "100%"}'>
+            <div data-role="view" data-title="Error">
+                <div data-role="header">
+                    <div data-role="navbar" class="km-light"> <span data-role="view-title"></span>
+                        <a data-role="button" data-align="right" data-click="app.homeView.closeParentPopover"
+                            data-icon="close"></a>
+                    </div>
+                </div>
+                <div class="scrollpopupDiv">
+                    
+                    <div class="paddingTop15">
+                        <h1 class="errorTitle  hideMandatoryText" loc-text="homeView.UploadAbortText"></h1>
+                        <label class="listDisplayHeader" loc-text="homeView.unansweredQuestionsList"></label>
+                         <div id="promptContainer" class="specsContainer ContainerAbort">
+                            <!-- Here compulsory questions or questions with mandatory Photo which are not answered/attached are displayed -->
+                        </div>                                  
+                    </div>
+                </div>
+            </div>
+        </div>    
+
+
+        <script type="text/x-kendo-tmpl" id="template">
+        	<div class="oppNoCol"><label>#: ProjectNo #</label></div>
+            <div class="oppNameCol"><label>#: ProjectName #</label></div>
+            <div class="btnRightGroup">
+            <div class="smallButton hidebtn"><a class="smallHomeButton" data-role="button"  data-icon="edit" data-projectid="#: ProjectID #"></a></div>
+			<div class="smallButton"><a class="smallHomeButton" data-role="button"  data-icon="details" data-projectid="#: ProjectID #"></a></div>
+			<div class="smallButton"><a class="smallHomeButton" data-role="button" id="#: 'imgs_' + RowGUID #"  data-icon="camera" imggallery="true" data-rowguid="#: RowGUID #"  data-projectname="#: ProjectName #"></a></div>
+			<div class="smallButton"><a class="smallHomeButton" data-role="button" id="#: 'vids_' + RowGUID #"  data-icon="videocamera" vidgallery="true" data-rowguid="#: RowGUID #"  data-projectname="#: ProjectName #"></a></div>
+            <div class="smallButton"><a class="smallHomeButton" data-role="button" data-icon="arrowupload" data-projectid="#: ProjectID #" data-rowguid="#: RowGUID #"></a></div>
+            <div class="smallButton"><a class="smallHomeButton" data-role="button" data-icon="delete" data-projectid="#: ProjectID #" data-rowguid="#: RowGUID #"></a></div>
+            </div>
+            <div class="progressCol">
+            <div class="progressInt">
+                    <progress value="#:PercentComplete#" max="100">#:PercentComplete# %</progress>
+                </div>
+                <div class="topMargin20">
+                 <a class="percentPopup" data-role="button" class="percentComp" data-icon="percent" data-percentComplete="#: PercentComplete #" >#: PercentComplete #%</a>
+                </div>
+            </div>            
+  
+        </script>
+
+        <div class="smallButtonLg displaynone"><a class="smallHomeButton" data-role="button" data-click="app.homeView.navigateToAddProject" loc-text="homeView.addNewProject" data-icon="add">Add New Project</a></div>
+    </section>
+    <!-- Sidebar -->
+    <!--<aside id="sidebar" class="contentHomeView">
+        <h3 loc-text="homeView.deviceStatus">Device Status</h3>-->
+        <!-- Sidebar content -->
+      	
+        <!--<div class="clear30">
+        </div>
+        <div>
+            <div class="padTop10 floatL">
+	            <label id="lblConnection" loc-text="homeView.connection">Connection:</label>           
+            </div>
+            
+        </div>
+    </aside>-->      
+
+    <div></div>
+
+    <!-- END_CUSTOM_CODE_homeView -->
+    </div>
+</div>

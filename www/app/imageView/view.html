@@ -1,0 +1,19 @@
+<div id="imageViewID" data-role="view" data-title="Image view" data-layout="main" data-zoom="true" data-model="app.imageView" data-show="app.imageView.onShow" data-after-show="app.imageView.afterShow" data-before-show="app.imageView.beforeShow">
+     <div id="imageCanvas" class="positionRelative">
+   		<h3 id="pageTitle">           
+        </h3>
+        
+        <div data-role="scrollview" id="imageAlbumScroll" data-duration="3000" data-change="pageChange" class="imageCanvas" style="padding-top: 15px; ">
+         
+        </div>
+        <div id="prevs-img" class="prevsimg" data-bind="click:showPrevImage" title="Previous Image"><img src="images/Licon.png"/></div>
+        <div id="nexts-img" class="prevsimg" data-bind="click:showNextImage" title="Next Image"><img src="images/Ricon.png"/></span></div>
+        <!-- <script id="scrollViewTemplate" type="text/x-kendo-template">
+            
+                <img src="#: nativeURL #" style="max-width: 100%; max-height: 100%;"></img>
+         
+        </script> -->   
+
+    </div>
+    <!-- END_CUSTOM_CODE_donloadProjectsView -->
+</div>
