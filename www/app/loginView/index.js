@@ -79,9 +79,14 @@ define(['jquery', 'cordova', 'kendo', 'app', 'localizer', 'WSHandler', 'DALAuthT
         cookieManager.writeCookie('userName', $("#userName").val(), app.config.tokenLife);
         var useName = app.getLoggedInUserName();
         //$("#loggedInUser").text("Sign-out ("+useName+")");
-        $("#loggedInUser").text(localizer.translateText("app.signout") + " (" + useName + ")");
+        // Commented logged in user name displayed in menu
+        //$("#loggedInUser").text(localizer.translateText("app.signout") + " (" + useName + ")");
 
         $("#loggedInUser").click(function() {
+          loginView.signOut();
+        });
+
+        $("#userLogout").click(function() {
           loginView.signOut();
         });
 

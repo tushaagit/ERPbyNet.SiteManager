@@ -13,7 +13,7 @@ define(['jquery', 'cordova', 'kendo', 'app', 'localizer', 'WSHandler', 'fileHand
         //Do data sync operations here and then call the callback
         if (callback != null)
           callback();
-                      
+
     }
 
     dataSyncManager.resultsCallback = function(result, dataCategoryID, clientCallbackHandler, operationSuccessHandler){

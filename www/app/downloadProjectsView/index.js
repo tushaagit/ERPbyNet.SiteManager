@@ -23,6 +23,11 @@ define(['jquery', 'cordova', 'kendo', 'app', 'localizer', 'WSHandler','DALAuthTo
     downloadProjectsView.set('title', localizer.translateText("downloadProjectsView.dwnldProjects"));
    	downloadProjectsView.set('searchText', '');
 
+   /*var   opportunityListData =  [{"ProjectID":"0001","ContractNo":"IN000189","ProjectName":"Dwarka Residancy","AddressLine1":"Deccan, Pune", "NoOfUnits": 4, "PercentComplete":null,"Notes":null,"AddedOn":null,"RowGuid":null},
+                                  {"ProjectID":"0002","ContractNo":"IN000185","ProjectName":"Dwarka","AddressLine1":"Aundh, Pune", "NoOfUnits": 10, "PercentComplete":null,"Notes":null,"AddedOn":null,"RowGuid":null},
+                                  {"ProjectID":"0003","ContractNo":"IN000155","ProjectName":"Dwarka Sankul","AddressLine1":"Pimpri, Pune", "NoOfUnits": 5, "PercentComplete":null,"Notes":null,"AddedOn":null,"RowGuid":null},
+                                  {"ProjectID":"0004","ContractNo":"IN000195","ProjectName":"Sai - Dwarka","AddressLine1":"Kothrud, Pune", "NoOfUnits": 18, "PercentComplete":null,"Notes":null,"AddedOn":null,"RowGuid":null}];*/
+
     downloadProjectsView.init = function()
     {
         downloadProjectsView.projectCount = 0;
@@ -40,11 +45,12 @@ define(['jquery', 'cordova', 'kendo', 'app', 'localizer', 'WSHandler','DALAuthTo
         var userName = app.getLoggedInUserName();
         var dataToPost = { "SearchText": searchText, "UserName" : userName };
         //alert(dataToPost +"//"+ downloadProjectsView.serviceSucceeded +"//"+ downloadProjectsView.serviceFailed);
-        WSHandler.sendRequest('SearchOpportunities', dataToPost, downloadProjectsView.serviceSucceeded, downloadProjectsView.serviceFailed);
+        WSHandler.sendRequest('SearchInstallationOpportunities', dataToPost, downloadProjectsView.serviceSucceeded, downloadProjectsView.serviceFailed);
+        // downloadProjectsView.bindData();
     };
 
     downloadProjectsView.serviceFailed = function (result, ex) {
-        //alert('Service call failed: ' + result.status + '  ' + result.statusText);
+        alert('Service call failed: ' + result.status + '  ' + result.statusText);
         alert(localizer.translateDynamicText("downloadProjectsView.servCallFailMsg", result.status + '  ' + result.statusText));
         DALErrorLog.addErrorLog(ex.message, app.errorLogSucceeded, app.erroLogFailed);
     };
@@ -83,26 +89,30 @@ define(['jquery', 'cordova', 'kendo', 'app', 'localizer', 'WSHandler','DALAuthTo
             }
     };
 
-   downloadProjectsView.bindData = function (opportunityList) {
+  downloadProjectsView.bindData = function (opportunityList) {
+  //   downloadProjectsView.bindData = function () {
         try {
             var dataSource = new kendo.data.DataSource({
-                data: opportunityList,
-                type: "json",
+                   data: opportunityList,
+                    dataType: "json",
+
+             schema: {
                 model: {
                     id: "ProjectID",
                     fields: {
                         ProjectID: { type: "int" },
-                        ProjectNo: { type: "string" },
+                        ContractNo: { type: "string" },
                         ProjectName: { type: "string" }
                     }
                 }
+             }
             });
             $("#downlodProjectlist").kendoMobileListView({
                 dataSource: dataSource,
                 template: $("#downlodProjectTemplate").text()
             });
 
-            DALSurveyTypes.getAllSurveyTypes(function (tx, records) {
+            /*DALSurveyTypes.getAllSurveyTypes(function (tx, records) {
                 if (records.rows.length > 0) {
                     var surveyTypeOtions;
                     var surveyTypeRecords = records.rows;
@@ -118,7 +128,7 @@ define(['jquery', 'cordova', 'kendo', 'app', 'localizer', 'WSHandler','DALAuthTo
                     }
                     $(".selectDropDown").html(surveyTypeOtions);
                 }
-            });
+            });*/
 
             downloadProjectsView.attachCircleClickHandler();
         }
@@ -173,6 +183,7 @@ define(['jquery', 'cordova', 'kendo', 'app', 'localizer', 'WSHandler','DALAuthTo
                         localizer.translateText("downloadProjectsView.downloadConfirmationMsg"), // message
                         function (buttonIndex) {
                             if (buttonIndex == 1) {
+
                                 DALProjects.deleteProjectData(final_array, function(tx, records){
                                     downloadProjectsView.downloadProjects(final_array);
                                 });
@@ -201,22 +212,26 @@ define(['jquery', 'cordova', 'kendo', 'app', 'localizer', 'WSHandler','DALAuthTo
          var dataToPost = {
                          "ProjectIDs": ProjectIds
                      };
-                WSHandler.sendRequest('GetOpportunitiesToDownload', dataToPost, downloadProjectsView.downloadSucceeded, downloadProjectsView.downloadFailed);
+
+                WSHandler.sendRequest('GetInstallationOpportunitiesToDownload', dataToPost, downloadProjectsView.downloadSucceeded, downloadProjectsView.downloadFailed);
+            //app.mobileApp.hideLoading();
+        	//alert(localizer.translateText("downloadProjectsView.dwnldCompleteMsg"));
+            //app.mobileApp.navigate("app/homeView/view.html");
     }
     downloadProjectsView.attachCircleClickHandler = function(){
-       /*$("[circle]").click(function(){
+       $("[circle]").click(function(){
             if($(this).hasClass("circleGrey"))
                 $(this).removeClass().addClass("circleGreen");
             else
                 $(this).removeClass().addClass("circleGrey");
-        });*/
+        });
         //The Entire row is clickable not for circle.
-         $("#downlodProjectlist li").click(function(){
+         /*$("#downlodProjectlist li").click(function(){ console.log($(this).children("[circle]"));
               if($(this).children("[circle]").hasClass("circleGrey"))
                 $(this).children("[circle]").removeClass().addClass("circleGreen");
             else
                 $(this).children("[circle]").removeClass().addClass("circleGrey");
-        });
+        });*/
     };
     return downloadProjectsView;
 });

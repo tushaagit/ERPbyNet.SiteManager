@@ -1,8 +1,8 @@
 define(['jquery', 'cordova', 'kendo', 'localizer'],
        function ($, cordova, kendo, localizer) {
-    var hashTable = {};	
+    var hashTable = {};
 	$.Hashtable  = function()
-    { 
+    {
             this.items=new Array();
             this.itemsCount=0;
             this.add = function(key,value)
@@ -13,7 +13,7 @@ define(['jquery', 'cordova', 'kendo', 'localizer'],
                             this.itemsCount++;
                     }
                     else{//lee change this, allow overwrite
-                            this.items[key]=value;  
+                            this.items[key]=value;
                     }
                             //throw "key '"+key+"' allready exists."
             }
@@ -70,6 +70,6 @@ define(['jquery', 'cordova', 'kendo', 'localizer'],
                 return this.items;
             }
      };
-    
+
     return hashTable;
 });

@@ -7,8 +7,8 @@ function (DALConfigParams) {
         trialPeriod: 100,
         attributeFilesFolder: "attributeImages",
         tokenLife: 2,
-        servicePath: "http://TKEAPI.erpbynet.com/api/",//"http://konetestapi.xecomit.com/api/",//http://koneerpbynetapi.azurewebsites.net/api/", //"http://TKEAPI.erpbynet.com/api/",//"http://localhost:59683/api/",// "http://koneerpbynetapi.azurewebsites.net/api/",////  //"http://sssdemoapi.xecomit.com/api/",//,
-        mediaServicePath: "http://TKEAPI.erpbynet.com/api/",//
+        servicePath: "http://siteappapi.xecomit.com/api/",//"http://konetestapi.xecomit.com/api/",//http://koneerpbynetapi.azurewebsites.net/api/", //"http://TKEAPI.erpbynet.com/api/",//"http://localhost:59683/api/",// "http://koneerpbynetapi.azurewebsites.net/api/",////  //"http://sssdemoapi.xecomit.com/api/",//,
+        mediaServicePath: "http://siteappapi.xecomit.com/api/",//
         knowledgebaseID:45,
         company: "XECOM IT",
         isSchemaUpdateNeeded : true,
@@ -21,6 +21,7 @@ function (DALConfigParams) {
         allowPartialSurveyDataUpload:true,
         defaultSurveyTypeID: 4,
         userCartMappingForAttributes: false
+
     };
 
     config.loadConfiguration = function(callback){

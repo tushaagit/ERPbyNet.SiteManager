@@ -25,12 +25,12 @@ var jic = {
          */
 
         compress: function(source_img_obj, quality, output_format){
-             
+
              var mime_type = "image/jpeg";
              if(typeof output_format !== "undefined" && output_format=="png"){
                 mime_type = "image/png";
              }
-             
+
 
              var cvs = document.createElement('canvas');
              cvs.width = source_img_obj.naturalWidth;
@@ -73,31 +73,31 @@ var jic = {
 
             var data = compressed_img_obj.src;
             data = data.replace('data:' + type + ';base64,', '');
-            
+
             var xhr = new XMLHttpRequest();
             xhr.open('POST', upload_url, true);
             var boundary = 'someboundary';
 
             xhr.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
-		
+
 		// Set custom request headers if customHeaders parameter is provided
 		if (customHeaders && typeof customHeaders === "object") {
 			for (var headerKey in customHeaders){
 				xhr.setRequestHeader(headerKey, customHeaders[headerKey]);
 			}
 		}
-		
+
 		// If a duringCallback function is set as a parameter, call that to notify about the upload progress
 		if (duringCallback && duringCallback instanceof Function) {
 			xhr.upload.onprogress = function (evt) {
-				if (evt.lengthComputable) {  
-					duringCallback ((evt.loaded / evt.total)*100);  
+				if (evt.lengthComputable) {
+					duringCallback ((evt.loaded / evt.total)*100);
 				}
 			};
 		}
-		
+
             xhr.sendAsBinary(['--' + boundary, 'Content-Disposition: form-data; name="' + file_input_name + '"; filename="' + filename + '"', 'Content-Type: ' + type, '', atob(data), '--' + boundary + '--'].join('\r\n'));
-            
+
             xhr.onreadystatechange = function() {
 			if (this.readyState == 4){
 				if (this.status == 200) {

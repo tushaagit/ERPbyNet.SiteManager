@@ -1,16 +1,10 @@
 'use strict';
-define(['jquery', 'cordova', 'kendo', 'app', 'fileHandler', 'localizer', 'cookieManager'],
-       function ($, cordova, kendo, app, fileHandler, localizer, cookieManager) {
+define(['jquery', 'cordova', 'kendo', 'app', 'localizer', 'cookieManager'],
+       function ($, cordova, kendo, app, localizer, cookieManager) {
 
     var trialExpired = kendo.observable({
-        beforeShow: function (e) {
-            var $view = $('#' + e.view.content.context.id);
-            if ($view.length > 0) {
-                app.removeCachedViews($view);
-            }
-        },
         onShow: function() {
-            var chkLogin = app.isUserAuthenticated();//call for valid user check method in app page
+            var chkLogin = app.checkLoginUser();//call for valid user check method in app page
                     if(chkLogin == false){//check for valid user session
                         app.mobileApp.navigate('app/loginView/view.html');//Not login then goto login page
                     }

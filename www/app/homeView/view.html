@@ -1,17 +1,30 @@
 <div id="homeViewID" data-role="view" data-title="Home View" class="homeView" data-layout="main" data-model="app.homeView" data-show="app.homeView.onShow" data-after-show="app.homeView.afterShow" data-before-show="app.homeView.beforeShow">
     <!-- START_CUSTOM_CODE_homeView -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-    
-    <div class="">          
+
+    <div class="">
 
     <section id="content" class="contentHomeView HomeViewBottom">
-        
-        <h3 loc-text="homeView.ProjectsList">Projects</h3>
+        <!-- <h3 loc-text="homeView.ProjectsList">Projects</h3> -->
         <!-- Main content -->
-        <div id="projectsList" class="alt-list-bg leftrightPd ">
-        </div>  
-        <div></div>
-        <div></div>    
+        <table class="fullwidthtable top-margin less-padding">
+            <!-- <tr>
+                <td>
+                    <div>
+                        <div class="listHeader widthContractSet" ><label >Contract #</label></div>
+                        <div class="listHeader widthSiteName" ><label>Site Name</label></div>
+                        <div class="listHeader widthAddress" ><label>Address</label></div>
+                    </div>
+                </td>
+            </tr> -->
+            <tr>
+                <td>
+                    <div id="projectsList" class="alt-list-bg leftrightPd ">
+                    </div>
+                </td>
+            </tr>
+        </table>
+
 
     <div data-role="popover" id="popover-Prompt" data-popup='{"height": "95%", "width": "100%"}'>
             <div data-role="view" data-title="Error">
@@ -22,39 +35,48 @@
                     </div>
                 </div>
                 <div class="scrollpopupDiv">
-                    
+
                     <div class="paddingTop15">
                         <h1 class="errorTitle  hideMandatoryText" loc-text="homeView.UploadAbortText"></h1>
                         <label class="listDisplayHeader" loc-text="homeView.unansweredQuestionsList"></label>
                          <div id="promptContainer" class="specsContainer ContainerAbort">
                             <!-- Here compulsory questions or questions with mandatory Photo which are not answered/attached are displayed -->
-                        </div>                                  
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
 
 
         <script type="text/x-kendo-tmpl" id="template">
-        	<div class="oppNoCol"><label>#: ProjectNo #</label></div>
-            <div class="oppNameCol"><label>#: ProjectName #</label></div>
+            <div class="listHeader widthContractSet oppContractColLeft"><span class="lbltext lbltextBold">Contract \\#</span></div>
+            <div class="oppContractCol"><span class="lbltext">#: ContractNo #</span></div>
+            <div class="listHeader widthSiteName oppContractColLeft"><span class="lbltext lbltextBold">Site Name</span></div>
+            <div class="oppContractCol"><span class="lbltext">#: ProjectName #</span></div>
+            <div class="listHeader widthAddress oppContractColLeft" ><span class="lbltext lbltextBold">Address</span></div>
+            <div class="oppContractCol"><span class="lbltext">#: AddressLine1 #</span></div>
+            <div class="left">
+            <div class="progressCol">
+            <div class="progressInt">
+                <div class="c100 p#:PercentComplete#">
+                    <span>#:PercentComplete#%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                    <!-- <progress value="#: PercentComplete #" max="100">#:PercentComplete# %</progress><label class="preLbl">#: PercentComplete # %</label> -->
+                </div>
+            </div>
+            </div>
+<div class="right">
             <div class="btnRightGroup">
-            <div class="smallButton hidebtn"><a class="smallHomeButton" data-role="button"  data-icon="edit" data-projectid="#: ProjectID #"></a></div>
-			<div class="smallButton"><a class="smallHomeButton" data-role="button"  data-icon="details" data-projectid="#: ProjectID #"></a></div>
-			<div class="smallButton"><a class="smallHomeButton" data-role="button" id="#: 'imgs_' + RowGUID #"  data-icon="camera" imggallery="true" data-rowguid="#: RowGUID #"  data-projectname="#: ProjectName #"></a></div>
-			<div class="smallButton"><a class="smallHomeButton" data-role="button" id="#: 'vids_' + RowGUID #"  data-icon="videocamera" vidgallery="true" data-rowguid="#: RowGUID #"  data-projectname="#: ProjectName #"></a></div>
+			<!-- <div class="smallButton"><a class="smallHomeButton" data-role="button"  data-icon="details" data-projectid="#: ProjectID #"></a></div> -->
             <div class="smallButton"><a class="smallHomeButton" data-role="button" data-icon="arrowupload" data-projectid="#: ProjectID #" data-rowguid="#: RowGUID #"></a></div>
             <div class="smallButton"><a class="smallHomeButton" data-role="button" data-icon="delete" data-projectid="#: ProjectID #" data-rowguid="#: RowGUID #"></a></div>
             </div>
-            <div class="progressCol">
-            <div class="progressInt">
-                    <progress value="#:PercentComplete#" max="100">#:PercentComplete# %</progress>
-                </div>
-                <div class="topMargin20">
-                 <a class="percentPopup" data-role="button" class="percentComp" data-icon="percent" data-percentComplete="#: PercentComplete #" >#: PercentComplete #%</a>
-                </div>
-            </div>            
-  
+            </div>
+
         </script>
 
         <div class="smallButtonLg displaynone"><a class="smallHomeButton" data-role="button" data-click="app.homeView.navigateToAddProject" loc-text="homeView.addNewProject" data-icon="add">Add New Project</a></div>
@@ -63,16 +85,16 @@
     <!--<aside id="sidebar" class="contentHomeView">
         <h3 loc-text="homeView.deviceStatus">Device Status</h3>-->
         <!-- Sidebar content -->
-      	
+
         <!--<div class="clear30">
         </div>
         <div>
             <div class="padTop10 floatL">
-	            <label id="lblConnection" loc-text="homeView.connection">Connection:</label>           
+	            <label id="lblConnection" loc-text="homeView.connection">Connection:</label>
             </div>
-            
+
         </div>
-    </aside>-->      
+    </aside>-->
 
     <div></div>
 

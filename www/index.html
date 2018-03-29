@@ -5,10 +5,12 @@
   <title></title>
   <meta charset="utf-8">
   <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+  <link href="kendo/styles/jquery-ui.css" rel="stylesheet">
   <link href="styles/main.css" rel="stylesheet">
-  <link href="styles/SmartSiteSurvey.css" rel="stylesheet">
+  <link href="styles/siteManager.css" rel="stylesheet">
   <link href="styles/ruleGenie.css" rel="stylesheet">
   <link href="styles/dd.css" rel="stylesheet">
+  <link href="styles/circle.css" rel="stylesheet">
   <!--<script src="cordova.js"></script>-->
   <!--<script src="kendo/js/kendo.mobile.min.js"></script>
     <script src="kendo/js/jquery.min.js"></script>
@@ -20,9 +22,13 @@
 <body id="kendoUiMobileApp">
   <div data-role="layout" data-id="main">
     <header data-role="header">
-      <div data-role="navbar"> <span data-role="view-title"></span>
-        <a class="smallButtonH" data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a> <label id="lblUserName" data-align="right">user</label> <a class="smallButtonH" data-id="btnBack" data-role="backbutton"
-          data-align="right" loc-text="app.back">Back</a> </div>
+      <div data-role="navbar"> <span data-role="view-title" class="mainTitle"></span>
+        <a class="smallButtonH" data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
+        <!-- <label id="lblUserName" data-align="right">user</label> -->
+        <a class="smallButtonH" data-id="btnBack" data-role="backbutton"  data-icon="arrow-back"
+          data-align="right"></a>
+          <!-- <a href="app/loginView/view.html" id="userLogout" data-icon="customCancel" class="smallButtonH" data-role="button" data-align="right"></a> -->
+      </div>
     </header>
 
     <footer data-role="footer">
@@ -71,7 +77,7 @@
     <ul id="navigation-container" data-role="listview">
       <li><a href="app/homeView/view.html" data-icon="home" loc-text="app.homeMenu">Home</a></li>
       <li><a href="app/downloadProjectsView/view.html" data-icon="settings" loc-text="app.downloadProjectsMenu">Download Projects</a></li>
-      <li><a href="app/aboutView/view.html" data-icon="info" loc-text="app.aboutApp">About Site Manager</a></li>
+      <li><a href="app/aboutView/view.html" data-icon="info" loc-text="app.aboutApp">About</a></li>
       <li><a onclick="app.navigateToSetup();" data-icon="settings" loc-text="app.setupMenu">Setup</a></li>
       <li><a href="app/loginView/view.html" id="loggedInUser"></a></li>
     </ul>

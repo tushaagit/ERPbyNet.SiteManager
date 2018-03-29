@@ -31,12 +31,17 @@ define(['jquery', 'cordova', 'kendo', 'app', 'gauge', 'localizer', 'fileHandler'
         });
         app.homeView = homeView;
 
+        /* var   opportunityListData =  [{"ProjectID":"0001","ContractNo":"IN000189","ProjectName":"Dwarka Residancy","AddressLine1":"Deccan, Pune", "NoOfUnits": 4, "PercentComplete":10,"Notes":null,"AddedOn":null,"RowGUID":null},
+                                  {"ProjectID":"0002","ContractNo":"IN000185","ProjectName":"Dwarka","AddressLine1":"Aundh, Pune", "NoOfUnits": 10, "PercentComplete":30,"Notes":null,"AddedOn":null,"RowGUID":null},
+                                  {"ProjectID":"0003","ContractNo":"IN000155","ProjectName":"Dwarka Sankul","AddressLine1":"Pimpri, Pune", "NoOfUnits": 5, "PercentComplete":20,"Notes":null,"AddedOn":null,"RowGUID":null},
+                                  {"ProjectID":"0004","ContractNo":"IN000195","ProjectName":"Sai - Dwarka","AddressLine1":"Kothrud, Pune", "NoOfUnits": 18, "PercentComplete":40,"Notes":null,"AddedOn":null,"RowGUID":null}];*/
+
         homeView.init = function () {
             localizer.translate();
             var navbar = app.mobileApp.view().header.find(".km-navbar").data("kendoMobileNavBar");
             navbar.title(localizer.translateText("homeView.home"));
             app.mobileApp.view().header.find("#lblUserName").html(app.getLoggedInUserName());
-
+            $("#loggedInUser").text(localizer.translateText("app.signout") + " (" + app.getLoggedInUserName() + ")");
         };
 
         homeView.set('title', localizer.translateText("homeView.home"));
@@ -77,6 +82,7 @@ define(['jquery', 'cordova', 'kendo', 'app', 'gauge', 'localizer', 'fileHandler'
                 for (var i = 0; i < projects.rows.length; i++) {
                     oppData.push(projects.rows.item(i));
                 }
+                // var oppData = opportunityListData;
                 var dataSource = new kendo.data.DataSource({
                     data: oppData,
                     type: "json"
@@ -91,10 +97,12 @@ define(['jquery', 'cordova', 'kendo', 'app', 'gauge', 'localizer', 'fileHandler'
                         dataSource: dataSource,
                         template: $("#template").text(),
                         dataBound: homeView.dataBoundHandler,
+                        fixedHeaders: true,
                         click: function (e) {                             //Entire row click change
                             if (e.button != undefined) {                  //click on other than button area
                                 if (e.button.options.icon == "details") { //click event on details button
-                                    homeView.navigateToProject(e);      //go to navigateproject
+                                    //homeView.navigateToProject(e);      //go to navigateproject
+                                    homeView.navigateToInstallationGroupsView(e);
                                 } else if (e.button.options.icon == "camera" || e.button.options.icon == "videocamera") {
                                     homeView.naivgateToImageGallery(e);
                                 } else if (e.button.options.icon == "arrowupload") {
@@ -114,7 +122,8 @@ define(['jquery', 'cordova', 'kendo', 'app', 'gauge', 'localizer', 'fileHandler'
                                          homeView.navigateToEditProject(e);
                                 }
                             } else {
-                                homeView.navigateToProject(e);
+                                //homeView.navigateToProject(e);
+                                homeView.navigateToInstallationGroupsView(e);
                             }
 
                         }
@@ -131,10 +140,17 @@ define(['jquery', 'cordova', 'kendo', 'app', 'gauge', 'localizer', 'fileHandler'
 
         /* original function is comment above.
         Entire row click chanage access parameter differently in navigateToProject.*/
-        homeView.navigateToProject = function (e) {
+        /*homeView.navigateToProject = function (e) {
             setTimeout(function () {
                 app.removePopupView();
                 app.mobileApp.navigate("app/projectView/view.html?ProjectID=" + e.dataItem.ProjectID)
+            }, 500);
+        };*/
+
+        homeView.navigateToInstallationGroupsView  = function (e) {
+            setTimeout(function () {
+                app.removePopupView();
+                app.mobileApp.navigate("app/installationGroupsView/view.html?ProjectID=" + e.dataItem.ProjectID)
             }, 500);
         };
 

@@ -1,4 +1,4 @@
-<div id="mediaGalleryViewID" data-role="view" data-title="Video Gallery" data-layout="main" data-model="app.mediaGalleryView" data-show="app.mediaGalleryView.onShow" data-after-show="app.mediaGalleryView.afterShow" data-before-show="app.mediaGalleryView.beforeShow">
+<div id="mediaGalleryViewID" data-role="view" data-title="Image Gallery" data-layout="main" data-model="app.mediaGalleryView" data-show="app.mediaGalleryView.onShow" data-after-show="app.mediaGalleryView.afterShow" data-before-show="app.mediaGalleryView.beforeShow">
     <!-- START_CUSTOM_CODE_projectView -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
      <div class="groupHeader-view">
@@ -15,61 +15,61 @@
         <form id="mediaForm">
            <ul data-role="listview" data-style="inset">
                <section id="gallaryContent">
-                   <div class="gallaryBtnContainer">                  
+                   <div class="gallaryBtnContainer">
                         <div class="floatL" id="dvTkImage">
-                            <a class="button dh smallGallaryButton" data-icon="camera" data-role="button" data-click="app.mediaGalleryView.takePicture" id="capturePhotoButton"></a>                    
+                            <a class="button dh smallGallaryButton " data-icon="camera" data-role="button" data-click="app.mediaGalleryView.takePicture" id="capturePhotoButton"></a>
                         </div>
                        	<div class="floatL" id="dvTkVideo">
-                            <a class="button dh smallGallaryButton" data-icon="videocamera" data-role="button" data-click="app.mediaGalleryView.takeVideo" id="capturePhotoButton"></a>
-                        </div>       
+                            <a class="button dh smallGallaryButton " data-icon="videocamera" data-role="button" data-click="app.mediaGalleryView.takeVideo" id="capturePhotoButton"></a>
+                        </div>
 
-                        <div class="floatL">		
-                            <div data-role="touch" data-tap="app.mediaGalleryView.zoomPictureTouch" data-drawSketch="true" data-imgname="WhiteBoard.jpg" data-imgurl="images/WhiteBoard.jpg">		
-                                 <img class="listImg" id="WhiteBoard.jpg"  src="images/WhiteBoard.jpg" style="display:none;" ></img>                   				
-                	        </div>		
-                        </div>		
-                        <div class="floatL" id="dvDwImage">		
-                             <a data-role="button" class="button dh smallGallaryButton " data-click="app.mediaGalleryView.zoomPicture" data-drawSketch="true" data-icon="pen" data-imgname="WhiteBoard.jpg" data-imgurl="images/WhiteBoard.jpg"></a>		
+                        <div class="floatL">
+                            <div data-role="touch" data-tap="app.mediaGalleryView.zoomPictureTouch" data-drawSketch="true" data-imgname="WhiteBoard.jpg" data-imgurl="images/WhiteBoard.jpg">
+                                 <img class="listImg" id="WhiteBoard.jpg"  src="images/WhiteBoard.jpg" style="display:none;" ></img>
+                	        </div>
+                        </div>
+                        <div class="floatL" id="dvDwImage">
+                             <a data-role="button" class="button dh smallGallaryButton  " data-click="app.mediaGalleryView.zoomPicture" data-drawSketch="true" data-icon="pen" data-imgname="WhiteBoard.jpg" data-imgurl="images/WhiteBoard.jpg"></a>
                         </div>
 
 
                 	</div>
                    <div>
                        <label id="lblSortBy" class="sortLable" loc-text="mediaGalleryView.sortBy">Sort by</label>
-                       <select onchange="app.mediaGalleryView.sortChange()" data-role="dropdownlist" 
-                                    id="ddl"  class="sortSelect" value="time" > 
-                           <option value="dateTimeDisplay">Time</option>                               
+                       <select onchange="app.mediaGalleryView.sortChange()" data-role="dropdownlist"
+                                    id="ddl"  class="sortSelect" value="time" >
+                           <option value="dateTimeDisplay">Time</option>
                            <option value="name">Name</option>
-                       </select>                           
+                       </select>
                    </div>
                     <div data-role="modalview" id="previewPopOver" class="previewPopOver" style="vertical-align: top !important; background-color:red; float:left">
                         <div class="zoomImgWrapper floatL previewImg">
                             <img id="previewImg" class="previewImg"></img>
                             <video id="previewVideo" class="previewVideo" controls></video>
                         </div>
-                        
+
                         <div id="fileNameWrapper" class="fileNameWrapper">
                             <div class="floatL fileNameLbl"><label for="fileName" class="required" ><span class="previewImage" loc-text="imageGallery.fileName" >File Name</span></label></div>
                             <div class="floatL fileNameTxt"><input type="text" onkeydown="app.mediaGalleryView.fileNameKeyDown(event)" id="fileName" data-bind="value: fileName" class="k-textbox previewtxt" required loc-ErrorText="mediaGalleryView.emptyFileNameMsg" validationMessage="Enter file name" autofocus></div>
-                           
-                        </div>              
-                        
+
+                        </div>
+
                        <div class="btnPopOver">
                             <div id="fileNameWrapper" >
                                 <div class="floatL marginLeft">
-                                <a class="button dh smallGallaryButton" data-icon="save" data-role="button" data-click="app.mediaGalleryView.savePicture" id="savePhotoButton"></a>                    
+                                <a class="button dh smallHomeButton" data-icon="save" data-role="button" data-click="app.mediaGalleryView.savePicture" id="savePhotoButton"></a>
                                 </div>
 
-                                <div class="floatL marginLeft">		
-                                    <a class="button dh smallGallaryButton" style="display:none;" data-icon="save" data-role="button" data-click="app.mediaGalleryView.saveSketch" id="saveSketchButton"></a>                    		
+                                <div class="floatL marginLeft">
+                                    <a class="button dh smallHomeButton" style="display:none;" data-icon="save" data-role="button" data-click="app.mediaGalleryView.saveSketch" id="saveSketchButton"></a>
                                 </div>
 
                                 <div class="floatL">
-                                    <a class="button dh smallGallaryButton" data-icon="delete" data-role="button" data-click="app.mediaGalleryView.discardPicture" id="discardPhotoButton"></a>   
+                                    <a class="button dh smallHomeButton" data-icon="delete" data-role="button" data-click="app.mediaGalleryView.discardPicture" id="discardPhotoButton"></a>
                                 </div>
-                                 <div class="floatL">               	
-                                    <a data-role="button" class="button dh smallGallaryButton" data-icon="close" data-click="app.mediaGalleryView.closePreviewPicture"></a>
-                                </div> 
+                                 <div class="floatL">
+                                    <a data-role="button" class="button dh smallHomeButton" data-icon="close" data-click="app.mediaGalleryView.closePreviewPicture"></a>
+                                </div>
                             </div>
                        </div>
                         <div style="display:none">
@@ -83,21 +83,21 @@
                             <img id="zoomedImg" class="previewImg"></img>
                             <video id="zoomedVideo" class="previewImg" controls></video>
                         </div>
-                        <div class="floatL paddingL10">      
-                        	<a data-role="button" class="button dh smallGallaryButton" data-icon="close" data-click="app.mediaGalleryView.closeZoomPicture"></a>
-                            <a data-role="button" id="btnPen" class="button dh smallGallaryButton" data-icon="pen" data-click="app.mediaGalleryView.annotateZoomPicture"></a>         	
+                        <div class="floatL paddingL10">
+                        	<a data-role="button" class="button dh smallHomeButton" data-icon="close" data-click="app.mediaGalleryView.closeZoomPicture"></a>
+                            <a data-role="button" id="btnPen" class="button dh smallHomeButton" data-icon="pen" data-click="app.mediaGalleryView.annotateZoomPicture"></a>
                         </div>
                         <div>
                         <label class="lblZoomImgTitle" id="zoomedImgName"></label>
                         <input type="hidden" id="imgUrl"></input>
                         </div>
-                        <div class="floatR paddingL10 marginRt15" id="divFullRes">                
-                            <a data-role="button" class="button dh smallGallaryButton" data-icon="search" data-click="app.mediaGalleryView.showFullResolution"></a>
+                        <div class="floatR paddingL10 marginRt15" id="divFullRes">
+                            <a data-role="button" class="button dh smallHomeButton" data-icon="search" data-click="app.mediaGalleryView.showFullResolution"></a>
                         </div>
-                    </div>                    
+                    </div>
                </section>
         		<div class="clear">
-                    
+
         		</div>
                 <aside  id="gallarySidebar">
                     <!--<div id="gallaryScroller" data-role="scroller" data-pull-to-refresh="true" data-pull-offset="20">-->
@@ -109,7 +109,7 @@
                 <div class="floatL">
                 <div data-role="touch" data-tap="app.mediaGalleryView.zoomPictureTouch" data-drawSketch="false" data-imgname="#: name #" data-imgurl="#: toURL #">
                         <img class="listImg" id="#: name #"  src="#: nativeURL #" style="display: #: isPicture == true ? 'block': 'none' #"></img>
-                   		<img class="listImg" src="images/vidPrew.png" id="#: name #"  style="display: #: isPicture == true ? 'none': 'block' #" ></img>                        
+                   		<img class="listImg" src="images/vidPrew.png" id="#: name #"  style="display: #: isPicture == true ? 'none': 'block' #" ></img>
                 	</div>
                 </div>
                 <div class="floatL">
@@ -119,8 +119,8 @@
                     <a data-role="button" class="smallGallaryButton " data-click="app.mediaGalleryView.zoomPicture" data-drawSketch="false" data-icon="search" data-imgname="#: name #" data-imgurl="#: toURL #"></a>
                 </div>
                 <div class="floatL">
-                    <label class="lblImgTitle imgInfo">#: name #</label>               
-                    <label class="lblImgTitle imgInfo">#: dateTimeDisplay #</label>    
+                    <label class="lblImgTitle imgInfo">#: name #</label>
+                    <label class="lblImgTitle imgInfo">#: dateTimeDisplay #</label>
                 </div>
             </script>
         </form>

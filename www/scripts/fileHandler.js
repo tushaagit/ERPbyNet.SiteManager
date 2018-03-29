@@ -67,14 +67,14 @@ define(['jquery', 'cordova', 'config'],
             }
             else {
                 window.resolveLocalFileSystemURL(fileHandler.getAppFilesRoot(),
-                    function onSuccess(appDirEntry) {
+                    function onSuccess(appDirEntry) { alert(uid); alert(JSON.stringify(appDirEntry));
                         appDirEntry.getDirectory(uid,
                             {
                                 create: true,
                                 exclusive: false
                             },
                             function (uidDirectoryEntry) {
-                                
+                                alert(JSON.stringify(uidDirectoryEntry));
                                 //Read the image files into an array
                                 // Get a directory reader
                                 var directoryReader = uidDirectoryEntry.createReader();
@@ -83,7 +83,7 @@ define(['jquery', 'cordova', 'config'],
                                 directoryReader.readEntries(function (uidFileEntries) {
                                     var uidFiles = [];
                                     try {
-
+                                        alert(JSON.stringify(uidFileEntries));
                                         var cnt = 0; var ignoredCount = 0; var counter = 0;
                                         for (var i = 0; i < uidFileEntries.length; i++) {
                                             uidFileEntries[i].getMetadata(fileHandler.buildMetadataResultsCallback(uidFiles, filter, type, uidFileEntries[i], i, uidFileEntries.length, successHandler));
@@ -126,9 +126,9 @@ define(['jquery', 'cordova', 'config'],
                 }
             }
             catch (e) { console.log(e.message); }
-            
+
             if (counter === (totalCount - 1)) {
-                
+
                 successHandler(filesArray);
             }
         };
@@ -224,7 +224,7 @@ define(['jquery', 'cordova', 'config'],
                 path = "file://" + path;
             window.resolveLocalFileSystemURL(path, function (fileEntry) {
                 //var nativeURL = fileEntry.nativeURL.replace("\\\", "\\");
-                //alert('nativeURL ' + nativeURL);                                            
+                //alert('nativeURL ' + nativeURL);
                 successHandler(fileEntry.nativeURL);
             },
                 function (err) {
@@ -409,7 +409,7 @@ define(['jquery', 'cordova', 'config'],
             else {
                 window.resolveLocalFileSystemURL(fileHandler.getAppFilesRoot(),
                     function (appDirEntry) {
-                        //alert(appDirEntry.name); 
+                        //alert(appDirEntry.name);
                         appDirEntry.getDirectory(source,
                             {
                                 create: false,
@@ -417,7 +417,7 @@ define(['jquery', 'cordova', 'config'],
                             },
                             function (srcDirectoryEntry) {
                                 //if(srcDirectoryEntry.name.indexOf('74a1') > -1)
-                                //    alert(srcDirectoryEntry.fullPath);    
+                                //    alert(srcDirectoryEntry.fullPath);
                                 //Read the image files into an array
                                 // Get a directory reader
                                 var directoryReader = srcDirectoryEntry.createReader();
@@ -483,7 +483,7 @@ define(['jquery', 'cordova', 'config'],
 
         /**
          * Convert a base64 string in a Blob according to the data and contentType.
-         * 
+         *
          * @param b64Data {String} Pure base64 string without contentType
          * @param contentType {String} the content type of the file i.e (image/jpeg - image/png - text/plain)
          * @param sliceSize {Int} SliceSize to process the byteCharacters
@@ -516,7 +516,7 @@ define(['jquery', 'cordova', 'config'],
 
         /**
          * Create a Image file according to its database64 content only.
-         * 
+         *
          * @param folderpath {String} The folder where the file will be created
          * @param filename {String} The name of the file that will be created
          * @param content {Base64 String} Important : The content can't contain the following string (data:image/png[or any other format];base64,). Only the base64 string is expected.
@@ -572,9 +572,9 @@ define(['jquery', 'cordova', 'config'],
                                 create: true,
                                 exclusive: false
                             },
-                            function (uidDirectoryEntry) {                               
+                            function (uidDirectoryEntry) {
                                 // Get a directory reader
-                                var directoryReader = uidDirectoryEntry.createReader();                                
+                                var directoryReader = uidDirectoryEntry.createReader();
 
                                 successCallback(directoryReader.localURL);
                             },

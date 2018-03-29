@@ -1,17 +1,17 @@
 'use strict';
 define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DALProjects'],
        function ($, cordova, app, DALMain, DALGroups, DALBuildings, DALProjects) {
-    
+
     	var DALSets = {};
-    	
+
         DALSets.dropTable = function(){
             var db = DALMain.db;
             var dropTable = "DROP TABLE IF EXISTS Sets";
-            db.transaction(function(tx) { 
-                tx.executeSql(dropTable, []); 
-            }); 
+            db.transaction(function(tx) {
+                tx.executeSql(dropTable, []);
+            });
         };
-    
+
     	DALSets.createTable = function(callback)
         {
           	var db=DALMain.db;
@@ -42,19 +42,19 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
                                 + "AddedOn TEXTDATETIME,"
                                 + "UpdatedOn TEXTDATETIME, "
                                 + "RowGUID TEXT, "
-                        		+ "IsActive INTEGER DEFAULT 1, "            
+                        		+ "IsActive INTEGER DEFAULT 1, "
                         		+ "IsDeleted INTEGER DEFAULT 0, "
-            					+ "PRIMARY KEY(ProjectID, BuildingID, GroupID, SetID) "	
+            					+ "PRIMARY KEY(ProjectID, BuildingID, GroupID, SetID) "
             					+ " );";
             db.transaction(function(tx){
                 tx.executeSql(tblDefinition, [], function(){
                     if(callback != null)
                         callback();
-                }, 
+                },
                 DALSets.onError);
             });
         };
-    	
+
     	DALSets.clearData=function()
         {
           	var db=DALMain.db;
@@ -63,66 +63,66 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
                 tx.executeSql(dropTable,[]);
             });
         };
-    
+
     	DALSets.addSet = function(projectID, buildingID, groupID, setID,
-                                        setNo, setName, oldProductTypeID, newProductTypeID, noOfUnits,                                   		
+                                        setNo, setName, oldProductTypeID, newProductTypeID, noOfUnits,
                                         status, percentComplete, notes, rowGUID, surveyVersionNo, updateSuccess) {
 			var  db= DALMain.db;
             //console.log('surveyVersionNo ' + surveyVersionNo);
             var addedOn = new Date();
             if(rowGUID == null || rowGUID == ''){
                 rowGUID = app.getGUID();
-            }         
+            }
             if(percentComplete == null || percentComplete == ''){
                 percentComplete = 0;
-            }  
+            }
             try {
 					db.transaction(function(tx) {
 						tx.executeSql("INSERT INTO Sets (projectID, buildingID, groupID, setID, "
-                                  	+ "setNo, setName, oldProductTypeID, newProductTypeID, noOfUnits, "                                 	
+                                  	+ "setNo, setName, oldProductTypeID, newProductTypeID, noOfUnits, "
                                   	+ "status, percentComplete, notes, RowGUID, SurveyVersionNo) "
                                  	+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                                 	[projectID, buildingID, groupID, setID, 
-                                     setNo, setName, oldProductTypeID, newProductTypeID, noOfUnits, 
+                                 	[projectID, buildingID, groupID, setID,
+                                     setNo, setName, oldProductTypeID, newProductTypeID, noOfUnits,
                                      status, percentComplete, notes, rowGUID, surveyVersionNo],
-                                    updateSuccess, 
+                                    updateSuccess,
                                     function(tx, err){
                             			alert(err.message);
                         			}
                                 );
-                        
+
                         var sql = "UPDATE Groups SET NoOfSets = (SELECT COUNT(*) "
                         											+ " FROM Sets WHERE Sets.ProjectID = Groups.ProjectID AND Sets.BuildingID = Groups.BuildingID AND Sets.GroupID = Groups.GroupID) "
                         							+ ", NoOfUnits = (SELECT SUM(NoOfUnits) "
                         											+ " FROM Sets WHERE Sets.ProjectID = Groups.ProjectID AND Sets.BuildingID = Groups.BuildingID AND Sets.GroupID = Groups.GroupID) "
                         			+ " WHERE Groups.ProjectID = ? AND Groups.BuildingID = ? AND Groups.GroupID = ? ";
-                        
+
                         tx.executeSql(sql, [projectID, buildingID, groupID], null,  function(tx, err){
                             			alert(err.message);
                         			}
                     	);
-                        
+
                         var sql = "UPDATE Buildings SET NoOfSets = (SELECT COUNT(*) "
                         											+ " FROM Sets WHERE Sets.ProjectID = Buildings.ProjectID AND Sets.BuildingID = Buildings.BuildingID) "
                         							+ ", NoOfUnits = (SELECT SUM(NoOfUnits) "
                         											+ " FROM Sets WHERE Sets.ProjectID = Buildings.ProjectID AND Sets.BuildingID = Buildings.BuildingID) "
                         			+ " WHERE Buildings.ProjectID = ? AND Buildings.BuildingID = ? ";
-                        
+
                         tx.executeSql(sql, [projectID, buildingID], null,  function(tx, err){
                             			alert(err.message);
                         			}
                     	);               	},
                     function(tx, err){
                         alert(err.message);
-                    });                      
+                    });
                 }
             catch(err)
                 {
                     alert(err.message);
                 }
-                    
+
         };
-        
+
         DALSets.getAllSets = function(resultsCallback)
         {
           	var db = DALMain.db;
@@ -130,10 +130,10 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
             db.transaction(
                 function(tx)
                 {
-                 	tx.executeSql(getAllData, [], resultsCallback, DALSets.onError);   
+                 	tx.executeSql(getAllData, [], resultsCallback, DALSets.onError);
                 });
         };
-    
+
     	DALSets.getAllActiveSets = function(resultsCallback)
         {
           	var db = DALMain.db;
@@ -141,11 +141,11 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
             db.transaction(
                 function(tx)
                 {
-                 	tx.executeSql(getAllData, [], resultsCallback, DALSets.onError);   
+                 	tx.executeSql(getAllData, [], resultsCallback, DALSets.onError);
                 });
         };
-    
-    
+
+
     	DALSets.getSetsOfAGroup = function(projectID, buildingID, groupID, resultsCallback)
         {
           	var db = DALMain.db;
@@ -156,9 +156,9 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
             db.transaction(
                 function(tx)
                 {
-                    tx.executeSql(sql, [projectID, buildingID, groupID], resultsCallback, DALSets.onError);   
+                    tx.executeSql(sql, [projectID, buildingID, groupID], resultsCallback, DALSets.onError);
                 });
-        
+
         };
 
         DALSets.getSetsOfAProject = function(projectID, resultsCallback)
@@ -171,35 +171,35 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
             db.transaction(
                 function(tx)
                 {
-                    tx.executeSql(sql, [projectID], resultsCallback, DALSets.onError);   
+                    tx.executeSql(sql, [projectID], resultsCallback, DALSets.onError);
                 });
-        
+
         };
-        
+
     	DALSets.getSetsOfGroups = function(projectID, groupsList, resultsCallback)
-        {            
+        {
             // alert(groupsList);
           	var db = DALMain.db;
             var filter = "";
-            if(groupsList!=""){ 
+            if(groupsList!=""){
             filter = " AND (" + DALSets.parseBuildingGroupSetIDsForQueryFilter(groupsList) + ") ";
-            }            
+            }
            	var sql = "SELECT Projects.ProjectName,  Projects.SurveyTypeID, Buildings.BuildingName, Groups.GroupName, Sets.*, OldProductTypes.ProductName AS OldProductType FROM Projects INNER JOIN Buildings ON Projects.ProjectID = Buildings.ProjectID INNER JOIN Groups ON Buildings.ProjectID = Groups.ProjectID AND Buildings.BuildingID = Groups.BuildingID "
             		+ " INNER JOIN Sets ON Groups.ProjectID = Sets.ProjectID AND Groups.BuildingID = Sets.BuildingID AND Groups.GroupID = Sets.GroupID "
               		+ " INNER JOIN OldProductTypes ON Sets.OldProductTypeID = OldProductTypes.ProductID "
           			+ " WHERE Sets.ProjectID = " + projectID + " " + filter + " AND Sets.IsDeleted = 0 ";
-                      
+
             db.transaction(
                 function(tx)
                 {
-                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);   
+                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);
                 });
         };
-    
+
     	DALSets.getDatatoUpload = function(projectID, resultsCallback)
         {
           	var db = DALMain.db;
-         
+
            	var sql = "SELECT Projects.ProjectID, Buildings.BuildingID, Groups.GroupID, Sets.SetID, Specs.AttributeName, Specs.IndexValue, "
             		+ " Projects.Notes AS ProjectNotes, Projects.PercentComplete AS ProjectCompletion, Buildings.Notes AS BuildingNotes, "
             		+ " Buildings.PercentComplete AS BuildingCompletion, Groups.Notes AS GroupNotes, Groups.PercentComplete AS GroupCompletion, "
@@ -211,19 +211,19 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
             		+ " INNER JOIN Sets ON Groups.ProjectID = Sets.ProjectID AND Groups.BuildingID = Sets.BuildingID AND Groups.GroupID = Sets.GroupID "
               		+ " INNER JOIN Specs ON Sets.ProjectID = Specs.ProjectID AND Sets.BuildingID = Specs.BuildingID AND Sets.GroupID = Specs.GroupID "
             		+ " AND Sets.SetID = Specs.SetID INNER JOIN Attributes ON Sets.OldProductTypeID = Attributes.ProductID AND Specs.AttributeName = Attributes.AttributeName "
-                    + " INNER JOIN KbAttributeCategories ON Attributes.ProductID = KbAttributeCategories.ProductID AND Attributes.Category = KbAttributeCategories.AttributeCategoryName "                  
+                    + " INNER JOIN KbAttributeCategories ON Attributes.ProductID = KbAttributeCategories.ProductID AND Attributes.Category = KbAttributeCategories.AttributeCategoryName "
           			+ " WHERE Sets.ProjectID = " + projectID + " AND Sets.IsDeleted = 0 order by KbAttributeCategories.SequenceNo, Specs.GroupName ";
             db.transaction(
                 function(tx)
                 {
-                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);   
+                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);
                 });
         };
 
         DALSets.getDatatoUploadBySet = function(projectID, setID, resultsCallback)
         {
           	var db = DALMain.db;
-         
+
            	var sql = "SELECT Projects.ProjectID, Buildings.BuildingID, Groups.GroupID, Sets.SetID, Specs.AttributeName, Specs.IndexValue, "
             		+ " Projects.Notes AS ProjectNotes, Projects.PercentComplete AS ProjectCompletion, Buildings.Notes AS BuildingNotes, "
             		+ " Buildings.PercentComplete AS BuildingCompletion, Groups.Notes AS GroupNotes, Groups.PercentComplete AS GroupCompletion, "
@@ -235,15 +235,15 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
             		+ " INNER JOIN Sets ON Groups.ProjectID = Sets.ProjectID AND Groups.BuildingID = Sets.BuildingID AND Groups.GroupID = Sets.GroupID "
               		+ " INNER JOIN Specs ON Sets.ProjectID = Specs.ProjectID AND Sets.BuildingID = Specs.BuildingID AND Sets.GroupID = Specs.GroupID "
             		+ " AND Sets.SetID = Specs.SetID INNER JOIN Attributes ON Sets.OldProductTypeID = Attributes.ProductID AND Specs.AttributeName = Attributes.AttributeName "
-                    + " INNER JOIN KbAttributeCategories ON Attributes.ProductID = KbAttributeCategories.ProductID AND Attributes.Category = KbAttributeCategories.AttributeCategoryName "                  
+                    + " INNER JOIN KbAttributeCategories ON Attributes.ProductID = KbAttributeCategories.ProductID AND Attributes.Category = KbAttributeCategories.AttributeCategoryName "
           			+ " WHERE Sets.ProjectID = " + projectID + " AND Sets.SetID = " + setID + " AND Sets.IsDeleted = 0 AND Attributes.IsDeleted = 0 order by KbAttributeCategories.SequenceNo, Specs.GroupName ";
             db.transaction(
                 function(tx)
                 {
-                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);   
+                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);
                 });
         };
-        
+
     	DALSets.parseBuildingGroupSetIDsForQueryFilter = function(buildingGroupSetIDsSelected){
             var buidlingGroupsSetIDsList = buildingGroupSetIDsSelected.split(",");
             var filter = "";
@@ -251,12 +251,12 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
                 if(i > 0){
                     filter += " OR ";
                 }
-                var IDs = buidlingGroupsSetIDsList[i].split("-");                
-                filter += " (Sets.BuildingID  = " + IDs[0] + " AND Sets.GroupID  = " + IDs[1] + ")";               
+                var IDs = buidlingGroupsSetIDsList[i].split("-");
+                filter += " (Sets.BuildingID  = " + IDs[0] + " AND Sets.GroupID  = " + IDs[1] + ")";
             }
             return filter;
     	};
-    
+
     	DALSets.updateActiveStatus = function(projectID, buildingID, groupID, setID, status )
         {
             var db = DALMain.db;
@@ -264,11 +264,11 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
             db.transaction(function(tx){
                 tx.executeSql("UPDATE Groups SET Status = ?, UpdatedOn =?  WHERE  projectID = ? AND buildingID = ? AND groupID = ? AND setID = ? ",
                               [status, updatedOn, projectID, buildingID, groupID, setID],
-                              DALSets.onSuccess, 
+                              DALSets.onSuccess,
                               DALSets.onError);
             });
         };
-    	
+
     	/*DALSets.updateCompletionStatus= function(projectID, buildingID, groupID, setID, percentageComplete )
         {
             var db = DALMain.db;
@@ -276,11 +276,11 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
             db.transaction(function(tx){
                 tx.executeSql("UPDATE Groups SET PercentComplete = ?, UpdatedOn =? WHERE  projectID = ? AND buildingID = ? AND groupID = ? AND setID = ? ",
                               [percentageComplete, updatedOn, projectID, buildingID, groupID, setID],
-                              DALSets.onSuccess, 
+                              DALSets.onSuccess,
                               DALSets.onError);
             });
         };*/
-       	
+
     	DALSets.calculateAndUpdateCompletionStatus= function(projectID, buildingID, groupID, setID)
         {
             //console.log('projectID, buildingID, groupID, setID ' + projectID + "," + buildingID+ "," + groupID+ "," + setID );
@@ -298,7 +298,7 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
                               });
             });*/
             var sql = "UPDATE Sets SET PercentComplete = ifnull(round(" + subQueryNumerator + " * 100.0 / " + subQueryDenominator + ", 2), 100) ";
-            sql += " WHERE projectID = " + projectID + " AND buildingID = " + buildingID + " AND groupID = " + groupID + " AND setID = " + setID 
+            sql += " WHERE projectID = " + projectID + " AND buildingID = " + buildingID + " AND groupID = " + groupID + " AND setID = " + setID
             db.transaction(function(tx){
                 tx.executeSql(sql,
                               [],
@@ -326,27 +326,27 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
                                                                        	DALSets.onError);
                                                     },
                                                    DALSets.onError);
-                				}, 
+                				},
                               DALSets.onError);
-               
+
             });
         };
-    
+
     	DALSets.getSet = function(projectID, buildingID, groupID, setID, resultsCallback)
-        {           
+        {
            	var db = DALMain.db;
 			var sql = "SELECT Projects.ProjectName, Buildings.BuildingName, Groups.GroupName, Sets.* , OldProductTypes.ProductName as OldProductType FROM Projects INNER JOIN Buildings ON Projects.ProjectID = Buildings.ProjectID INNER JOIN Groups ON Buildings.ProjectID = Groups.ProjectID AND Buildings.BuildingID = Groups.BuildingID "
             		+ " INNER JOIN Sets ON Groups.ProjectID = Sets.ProjectID AND Groups.BuildingID = Sets.BuildingID AND Groups.GroupID = Sets.GroupID "
               		+ " INNER JOIN OldProductTypes ON Sets.OldProductTypeID = OldProductTypes.ProductID "
-            		+ " WHERE Sets.ProjectID = " + projectID + " AND Sets.BuildingID = " + buildingID + " AND Sets.GroupID = " + groupID + " AND Sets.SetID = " + setID + " AND Sets.IsDeleted = 0 ";            
+            		+ " WHERE Sets.ProjectID = " + projectID + " AND Sets.BuildingID = " + buildingID + " AND Sets.GroupID = " + groupID + " AND Sets.SetID = " + setID + " AND Sets.IsDeleted = 0 ";
             db.transaction(
                 function(tx)
                 {
-                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);   
+                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);
                 });
         };
-    
-    	DALSets.updateSets = function(projectID, buildingID, groupID, setID, setName, oldProductTypeID, newProductTypeID, noOfUnits, 
+
+    	DALSets.updateSets = function(projectID, buildingID, groupID, setID, setName, oldProductTypeID, newProductTypeID, noOfUnits,
                                        attr1, attr2, attr3, attr4, attr5, attr6, attr7, attr8, attr9, attr10, notes, resultsCallback)
         {
             var db = DALMain.db;
@@ -360,47 +360,47 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
                                 + " Attribute4 = ?, "
                                 + " Attribute5 = ?, "
                                 + " Attribute6 = ?, "
-                                + " Attribute7 = ?, "	
+                                + " Attribute7 = ?, "
                                 + " Attribute8 = ?, "
                                 + " Attribute9 = ?, "
                                 + " Attribute10 = ?, "
              					+ " Notes = ? "
             					+ " WHERE ProjectID = ? AND BuildingID = ? AND GroupID = ? AND SetID = ? ";
-           
+
             try
             {
                 db.transaction(function(tx){
-                    tx.executeSql(sql, [setName, 
-                                        oldProductTypeID, 
-                                        newProductTypeID, 
-                    					attr1, 
-                                        attr2, 
-                                        attr3, 
-                                        attr4, 
-                                        attr5, 
-                                        attr6, 
-                                        attr7, 
-                                        attr8, 
-                                        attr9, 
-                                        attr10, 
-                                    	notes, 
+                    tx.executeSql(sql, [setName,
+                                        oldProductTypeID,
+                                        newProductTypeID,
+                    					attr1,
+                                        attr2,
+                                        attr3,
+                                        attr4,
+                                        attr5,
+                                        attr6,
+                                        attr7,
+                                        attr8,
+                                        attr9,
+                                        attr10,
+                                    	notes,
                                     	projectID, buildingID, groupID, setID], resultsCallback, DALSets.onError);
-                    
-                                  
+
+
                 });
-                
+
                 //DALSets.updateCompletionStatus(projectID, buildingID, groupID, setID, percentageComp);
                 DALSets.updateNoOfSetAndNoOfUnits(projectID, buildingID, groupID, setID, noOfUnits);
-                
+
             }
             catch(err)
             {
                 alert(err.message);
             }
-            
+
         };
-    
-    	
+
+
     	DALSets.updateCompletionStatus = function(projectID, buildingID, groupID, setID, percentageComp)
         {
          	var db = DALMain.db;
@@ -409,7 +409,7 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
                 db.transaction(function(tx){
                     tx.executeSql("UPDATE Sets Set PercentComplete = round(?, 2) WHERE ProjectID = ? AND BuildingID = ? AND GroupID = ? AND SetID = ? ",
 									[percentageComp, projectID, buildingID, groupID, setID],
-                                  	function(tx){ DALGroups.calculateCompletionStatus(projectID, buildingID, groupID); }, 
+                                  	function(tx){ DALGroups.calculateCompletionStatus(projectID, buildingID, groupID); },
                               		DALSets.onError);
                 });
                 //DALGroups.calculateCompletionStatus(projectID, buildingID, groupID);
@@ -419,9 +419,9 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
            	catch(err)
             {
 				alert(err.message);
-            }   
-        };    	
-    	
+            }
+        };
+
     	DALSets.updateNoOfSetAndNoOfUnits = function(projectID, buildingID, groupID, setID, noOfUnits)
         {
             var db = DALMain.db;
@@ -430,7 +430,7 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
                 db.transaction(function(tx){
                     tx.executeSql("UPDATE Sets Set NoOfUnits = ? WHERE ProjectID = ? AND BuildingID = ? AND GroupID = ? AND SetID = ? ",
 									[noOfUnits, projectID, buildingID, groupID, setID],
-                                  	DALSets.onSuccess, 
+                                  	DALSets.onSuccess,
                               		DALSets.onError);
                 });
                 DALGroups.updateNoOfSetsAndNoOfUnits(projectID, buildingID, groupID);
@@ -439,9 +439,9 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
            	catch(err)
             {
 				alert(err.message);
-            }                 
+            }
         };
-    	
+
         DALSets.getMaxSetID = function (resultsCallback) {
             var db = DALMain.db;
             try {
@@ -453,7 +453,7 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
                 alert(err.message);
             }
         };
-    
+
     	DALSets.onSuccess = function(tx, results){
             //alert('DALSets.onSuccess');
         };
@@ -461,12 +461,12 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
         DALSets.onError = function(tr, err){
             alert(err.message);
         };
-    
+
 
         DALSets.getMandatoryProductAttributes = function(projectID, surveyTypeID, resultsCallback)
         {
           	var db = DALMain.db;
-         
+
            	var sql = "SELECT Projects.ProjectID, Buildings.BuildingID, Groups.GroupID, Sets.SetID, Specs.AttributeName, Specs.IndexValue, "
             		+ " Projects.Notes AS ProjectNotes, Projects.PercentComplete AS ProjectCompletion, Projects.ProjectName AS ProjectName, Buildings.Notes AS BuildingNotes, "
             		+ " Buildings.PercentComplete AS BuildingCompletion, Buildings.BuildingName AS BuildingName, Groups.Notes AS GroupNotes, Groups.PercentComplete AS GroupCompletion, "
@@ -478,50 +478,50 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
             		+ " INNER JOIN Sets ON Groups.ProjectID = Sets.ProjectID AND Groups.BuildingID = Sets.BuildingID AND Groups.GroupID = Sets.GroupID "
               		+ " INNER JOIN Specs ON Sets.ProjectID = Specs.ProjectID AND Sets.BuildingID = Specs.BuildingID AND Sets.GroupID = Specs.GroupID "
             		+ " AND Sets.SetID = Specs.SetID INNER JOIN Attributes ON Sets.OldProductTypeID = Attributes.ProductID AND Specs.AttributeName = Attributes.AttributeName "
-                    + " INNER JOIN KbAttributeCategories ON Attributes.ProductID = KbAttributeCategories.ProductID AND Attributes.Category = KbAttributeCategories.AttributeCategoryName "                  
+                    + " INNER JOIN KbAttributeCategories ON Attributes.ProductID = KbAttributeCategories.ProductID AND Attributes.Category = KbAttributeCategories.AttributeCategoryName "
           			+ " WHERE Sets.ProjectID = " + projectID + " AND Projects.SurveyTypeID = " + surveyTypeID + " AND Sets.IsDeleted = 0 order by KbAttributeCategories.SequenceNo, Specs.GroupName ";
                       console.log(sql);
             db.transaction(
                 function(tx)
                 {
-                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);   
+                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);
                 });
-        };  
-        
+        };
+
 
         DALSets.getSetOfProduct = function(projectID, buildingID, groupID, setID, productID, resultsCallback)
-        {           
+        {
            	var db = DALMain.db;
 			var sql = "SELECT Projects.ProjectName, Buildings.BuildingName, Groups.GroupName, Sets.* , OldProductTypes.ProductName as OldProductType FROM Projects INNER JOIN Buildings ON Projects.ProjectID = Buildings.ProjectID INNER JOIN Groups ON Buildings.ProjectID = Groups.ProjectID AND Buildings.BuildingID = Groups.BuildingID "
             		+ " INNER JOIN Sets ON Groups.ProjectID = Sets.ProjectID AND Groups.BuildingID = Sets.BuildingID AND Groups.GroupID = Sets.GroupID "
               		+ " INNER JOIN OldProductTypes ON Sets.OldProductTypeID = OldProductTypes.ProductID "
             		+ " WHERE Sets.ProjectID = " + projectID + " AND Sets.BuildingID = " + buildingID + " AND Sets.GroupID = " + groupID + " AND Sets.SetID = " + setID + "  AND Sets.OldProductTypeID = " + productID + " AND Sets.IsDeleted = 0 ";
-                   // console.log(sql);            
+                   // console.log(sql);
             db.transaction(
                 function(tx)
                 {
-                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);   
+                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);
                 });
         };
 
 
        DALSets.getSetsOfProductGroups = function(projectID, groupsList, productID, resultsCallback)
-        {            
+        {
             // alert(groupsList);
           	var db = DALMain.db;
             var filter = "";
-            if(groupsList!=""){ 
+            if(groupsList!=""){
             filter = " AND (" + DALSets.parseBuildingGroupSetIDsForQueryFilter(groupsList) + ") ";
-            }            
+            }
            	var sql = "SELECT Projects.ProjectName,  Projects.SurveyTypeID, Buildings.BuildingName, Groups.GroupName, Sets.*, OldProductTypes.ProductName AS OldProductType FROM Projects INNER JOIN Buildings ON Projects.ProjectID = Buildings.ProjectID INNER JOIN Groups ON Buildings.ProjectID = Groups.ProjectID AND Buildings.BuildingID = Groups.BuildingID "
             		+ " INNER JOIN Sets ON Groups.ProjectID = Sets.ProjectID AND Groups.BuildingID = Sets.BuildingID AND Groups.GroupID = Sets.GroupID "
               		+ " INNER JOIN OldProductTypes ON Sets.OldProductTypeID = OldProductTypes.ProductID "
           			+ " WHERE Sets.ProjectID = " + projectID + " " + filter + " AND Sets.OldProductTypeID = " + productID + " AND Sets.IsDeleted = 0 ";
-                      
+
             db.transaction(
                 function(tx)
                 {
-                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);   
+                    tx.executeSql(sql, [], resultsCallback, DALSets.onError);
                 });
         };
 
@@ -543,7 +543,7 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
                               });
             });*/
             var sql = "UPDATE Sets SET PercentComplete = ifnull(round(" + subQueryNumerator + " * 100.0 / " + subQueryDenominator + ", 2), 100) ";
-            sql += " , Notes = ?, SurveyVersionNo = ? WHERE projectID = " + projectID + " AND buildingID = " + buildingID + " AND groupID = " + groupID + " AND setID = " + setID 
+            sql += " , Notes = ?, SurveyVersionNo = ? WHERE projectID = " + projectID + " AND buildingID = " + buildingID + " AND groupID = " + groupID + " AND setID = " + setID
             db.transaction(function(tx){
                 tx.executeSql(sql,
                               [notes, surveyVersionNo],
@@ -571,12 +571,12 @@ define(['jquery', 'cordova', 'app', 'DALMain', 'DALGroups', 'DALBuildings', 'DAL
                                                                        	DALSets.onError);
                                                     },
                                                    DALSets.onError);
-                				}, 
+                				},
                               DALSets.onError);
-               
+
             });
         };
 
     	return DALSets;
-    	
+
 });

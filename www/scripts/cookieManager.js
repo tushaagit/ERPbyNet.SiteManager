@@ -7,7 +7,7 @@ define(['app', 'jquery'],
         cookieManager.writeCookie =
             function (name, value, days) {
                 var date, expires;
-                
+
                 if (days > 0) {
                     date = new Date();
                     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -28,14 +28,14 @@ define(['app', 'jquery'],
                 //return sessionStorage.getItem(name);
                 return window.localStorage.getItem(name);
             };
-            
+
             cookieManager.isExpired = function(name){
                 var cookie =  cookieManager.readCookie(name);
-                
+
                 if(cookie.lastIndexOf('expires') > 0){
                     var expires = cookie.substring(cookie.lastIndexOf("=") + 1 );
 
-                    
+
                     return (new Date() < new Date(expires));
                 }
                 else{

@@ -1,4 +1,4 @@
-\.km-flat.km-flat .km-flat .km-list input[type=text]:not(.k-input), .km-flat .km-list select:not([multiple]), .km-flat .km-list .k-dropdown-wrap {
+.km-flat.km-flat .km-flat .km-list input[type=text]:not(.k-input), .km-flat .km-list select:not([multiple]), .km-flat .km-list .k-dropdown-wrap {
     -webkit-appearance: menulist-button !important;
     -moz-appearance: none;
     appearance: none;
@@ -20,15 +20,12 @@ h4 {
 h5 {
     color: grey;
 }
-.progressDiv{width: 85%;
-    margin: 63px auto;
-    margin-bottom: 63px;
-    margin-right:3.1em; }
+
 .floatRightBtn{ padding-bottom:20px; width:20%;  float:left;}
 .btnCloseCenter{ width:7%; margin:0px auto;}
 .CenterTop{ margin-top:10px;}
-.new1{ width:80%; float:left;} 
-.new2{ width:100%; float:left;} 
+.new1{ width:80%; float:left;}
+.new2{ width:100%; float:left;}
 thead {
     background-color: #10c4b2;
 }
@@ -42,18 +39,18 @@ thead {
 .km-widget.km-buttongroup {
  border-radius:50%;
 }
-   
+
 .marginBottom{
 bottom:30%;
 position: fixed;
 }
-  
+
 .setupViewHeight{height:629px;}
 .km-flat .km-buttongroup>*:first-child {
        padding: 10px 10px 10px 0px;
 }
 .km-flat .km-tabstrip, .km-flat .km-flat .km-scroller-pull .km-icon, .km-flat .km-popup.km-pane .k-toolbar, .km-flat .km-popup.km-pane .km-tabstrip, .km-flat .km-popup , .km-flat .km-actionsheet>li>a, .km-flat .km-actionsheet>li>a, .km-flat .km-actionsheet>li, .km-flat .km-listview-link:after{
-    color:#00B0F0 !important;        
+    color:#00B0F0 !important;
 }
 .km-flat .km-buttongroup>*:last-child {
         padding: 10px 10px 10px 0px;
@@ -70,29 +67,6 @@ position: fixed;
 
 /*-------*/
 .km-no{color:red;}
-progress {
-    background-color: #70db70;
-    border: 0;
-    height: 18px;
-    border-radius: 9px;
-    width:95%;
-}
-
-progress::-webkit-progress-bar {
-    /* style rules */
-    border: 0;
-    height: 18px;
-    border-radius: 9px;
-}
-
-progress::-webkit-progress-value {
-    /* style rules */
-    background-color: #00b0f0;
-    border: 0;
-    height: 18px;
-    border-radius: 9px;
-}
-
 
 .listViewMessage {
     margin-left: 20px;
@@ -118,12 +92,8 @@ progress::-webkit-progress-value {
     z-index: 5;
 }
 
-;
-progress::-moz-progress-bar {
-/* style rules */
-}
 label {
-    font: normal normal bold 14px/1 Verdana, Geneva, sans-serif !important; 
+    font: normal normal bold 14px/1 Verdana, Geneva, sans-serif !important;
     color: #6d6d6d;
     padding: 0 5px 0 0px;
 }
@@ -169,7 +139,7 @@ input, select {
     -webkit-box-sizing: content-box !important;
     -moz-box-sizing: content-box !important;
     box-sizing: content-box !important;
-    width: 300px !important;
+    width:85% !important;
     padding: 10px 20px !important;
     border: 1px solid #94bfce !important;
     -webkit-border-radius: 4px !important;
@@ -273,9 +243,9 @@ table {
 .widthcomplete{width:17%;}
 
 .widthGroupSet {width:8%;}
-.widthGroupProduct{width:22%;} 
+.widthGroupProduct{width:22%;}
 .widthGroupUnit {width:20%;}
-.widthGroupComplete{width:12%;}  
+.widthGroupComplete{width:12%;}
 .divscrool {overflow: auto;}
 .marginLeft {margin-left: 9px;}
 .clearBoth {clear: both;}
@@ -550,7 +520,7 @@ border: 2px solid #e0e0e0;
 .percColBuilding {
 
     width:12%;
-  
+
 }
 .percColProject {
     float: left;
@@ -566,10 +536,10 @@ border: 2px solid #e0e0e0;
 
 .mainBgDownload {
     background-color: #FFFFFF;
-    width: 969px;
+    width:100%
     float: left;
     border-radius: 5px;
-    padding: 0px 0 18px 0px;
+    padding: 0px 0 0px 0px;
     margin: 0px;
 }
 
@@ -581,7 +551,7 @@ border: 2px solid #e0e0e0;
 }
 
 .lblSearchLeftMiddle {
-    margin: 40px 10px 0 10px !important;
+    margin:6px 10px 0 10px !important;
     float: left !important;
     padding: 0px;
 }
@@ -596,13 +566,13 @@ border: 2px solid #e0e0e0;
     margin:0px auto;
     padding: 0px;
     width:14%;
-    
+
 }
 .btnDownloadClose {
     margin:0px 0px 0 0px !important;
     padding:0px;
     float:right;
-    
+
 }
 .oppNameCol {
     float: left;
@@ -648,27 +618,21 @@ border: 2px solid #e0e0e0;
     color: white;
     margin:10px 5px 0 5px;
 }
-/*!important property in progressCol class for float added by Pawan on 12th july*/
- .progressCol {
-    float: left !important;
-    width: 93% !important;
-    margin-top: -6px;
-}
+
 .topMargin20{margin-top:-24px;}
-.progressInt{ width:59%; float:left; }
 
 .percentComp{ padding: 0 !important; margin-top:3px; position:relative; left:30%; }
 
 .btnRightGroup {
     float: none;
 }
-.percentPopup{ background:none !important; 
+.percentPopup{ background:none !important;
     border: none !important;
     border-radius: 0px;
     color:blue !important;
     margin:-7px 0 0 -38px;
     text-decoration: underline;
-    float:left;   
+    float:left;
     text-align: -webkit-match-parent;
     box-shadow: rgb(52, 75, 84) 0px 0px 0px 0px;
 
@@ -687,7 +651,7 @@ border: 2px solid #e0e0e0;
 }
 
  /* .noOfUnitsPL {
-   padding: 0 0 0 7px !important; 
+   padding: 0 0 0 7px !important;
 } */
 
 .productColGroup {
@@ -836,7 +800,7 @@ border: 2px solid #e0e0e0;
     box-sizing: border-box;
 }
 
-.selectDropDownwidth{ 
+.selectDropDownwidth{
     width:141px !important;
     }
 .selectDropDown{
@@ -984,7 +948,7 @@ border: 2px solid #e0e0e0;
 }
 
 #lblUserName {
-    color: white;
+    color: red;
     text-decoration: underline;
     margin-right: 10px;
 }
@@ -1087,7 +1051,7 @@ border: 2px solid #e0e0e0;
     margin: 0px;
     padding: 15px;
     float: left;
-   
+
 }
 
 .HomePopupForm ul {
@@ -1190,13 +1154,13 @@ border: 2px solid #e0e0e0;
 .fieldsWrapper {
     margin: 0px auto;
     padding: 0px;
-    width:635px;
+    width:100%;
 }
 
 .fieldsWrapperbig {
     margin: 0px auto;
     padding: 0px;
-    width: 632px;
+    width:100%;
 }
 
 .fieldsBackground {
@@ -1205,7 +1169,7 @@ border: 2px solid #e0e0e0;
     -moz-border-radius: 12px 12px 15px 12px;
     -webkit-border-radius: 12px 12px 12px 12px;
     border: 0px solid #808080;
-    margin:2em 0 0 0px;
+    margin:1em 10px 0 10px;
     border: 1px solid rgba(45, 62, 80, .3);
 }
 
@@ -1271,15 +1235,15 @@ border: 2px solid #e0e0e0;
 .headerLogoSSS {
     padding:0px;
     margin: 0px auto;
-    width:18%;
-    padding-top:3em;
+    width:35%;
+    padding-top:1em;
 }
-.logoLock {padding: 0px;width: 126px;margin: 26px 0 0 15px;float: left;}
-.headerLogoSSS img {width:152px; height:105px;}   
-.footerLogo{bottom: 0; margin:8em 17px 0 0px; float: right;}
+.logoLock {padding: 0px;width: 126px; margin:4em 0 0 7px; float: left;}
+.headerLogoSSS img {width:152px; height:105px;}
+.footerLogo{bottom: 0; margin:-4em 17px 0 0px; float: right;}
 .headerLogoRight {
-    margin: 7px 20px 10px 0px;
-    padding: 0px;
+    margin:7px 20px 10px 0px;
+    padding:0px;
 }
 
 .headerLLInner {
@@ -1381,7 +1345,7 @@ border: 2px solid #e0e0e0;
 
 .sortSelect {
     border:1px solid #00b0f0 !important;
-    margin-top:20px !important;   
+    margin-top:20px !important;
     padding: 5px !important;
     right: 20px !important;
     border: 0px !important;
@@ -1417,7 +1381,7 @@ border: 2px solid #e0e0e0;
     width:25%;
     margin-top: -35px !important;
     float: right;
-    padding-right: 90px;    
+    padding-right: 90px;
     font: bold 14px/1 Verdana, Geneva, sans-serif !important;
 }
 
@@ -1642,7 +1606,7 @@ span.k-invalid-msg {
     font-size: 17px;
     padding-left: 5px;
     line-height:43px !important;
-    
+
 }
 .circleGrey {
     border-radius: 100%;
@@ -1688,8 +1652,8 @@ span.k-invalid-msg {
         margin: 2px 6px 0 6px;
     }
 
-    noOfUnitsColLable {width: 9%;text-align: left;} 
-    .widthSet {width: 12%;} 
+    noOfUnitsColLable {width: 9%;text-align: left;}
+    .widthSet {width: 12%;}
     .widthGroupUnit {width:13%;}
     .oppNameCol {
         float: left;
@@ -1807,9 +1771,9 @@ a#nexts-img:hover  {
 }
 .closeIcon{
     position:absolute;
-    left:95%;    
+    left:95%;
     font-size:30px;
-    margin-bottom:10%;    
+    margin-bottom:10%;
 }
 
 .questionList li:nth-child(odd){

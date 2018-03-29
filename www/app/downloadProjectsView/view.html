@@ -2,43 +2,63 @@
     data-after-show="app.downloadProjectsView.afterShow" data-before-show="app.downloadProjectsView.beforeShow">
     <!-- START_CUSTOM_CODE_donloadProjectsView -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-    <div class="groupHeader-view">
-        <h3 data-bind="html: title"></h3>
+    <div class="groupHeader-view groupHeightDownload">
+
         <div>
             <form id="downloadProjectsForm">
-                <ul data-role="listview" data-style="inset">
-                    <li>
-                        <div class="mainBgDownload">
-                            <div class="colMd">&nbsp;</div>
-                            <div class="lblSearchLeft"> <label for="searchText" class="required" data-i18n="downloadProkect.search" loc-text="downloadProjectsView.searchTextName">Search Text</label>                                </div>
-                            <div class="lblSearchLeftMiddle"> <input type="text" tabindex="0" id="searchText" data-bind="value: searchText" required validationMessage=""
-                                    autofocus> </div>
-                            <div class="lblSearchRight"> <a data-role="button" class="primary" data-click-on="down" tabindex="1" data-i18n="downloadProject.search"
-                                    data-click="app.downloadProjectsView.search" loc-text="downloadProjectsView.search">Search</a>                                </div>
+                <div data-role="listview" data-style="inset">
+                        <div>
+                     <label for="searchText" class="required" data-i18n="downloadProkect.search" loc-text="downloadProjectsView.searchTextName">Search Text</label>
+                        <div class="downloadlblSearch">
+                           <input type="text" tabindex="0" id="searchText" data-bind="value: searchText" required validationMessage=""
+                                    autofocus>  </div>
+                                    <div class="downloadbtn">
+                            <a data-role="button" class="primary" data-click-on="down" tabindex="1" data-i18n="downloadProject.search"
+                                    data-click="app.downloadProjectsView.search" loc-text="downloadProjectsView.search"><span>Search</span></a>        </div>
                         </div>
-                    </li>
-                </ul>
+                </div>
                 <div>
                     <div class="demo-section k-content wide">
+                <div>
+                <h3 loc-text="downloadProjectsView.listOfOpportunities">List of opportunities</h3> </div>
+                <table class="fullwidthtable top-margin less-padding">
+                <!-- <tr>
+                    <td>
                         <div>
-                            <h3 loc-text="downloadProjectsView.listOfOpportunities">List of opportunities</h3> </div>
-                        <dl>
-                            <div id="downlodProjectlist" class="alt-list-bg"></div>
-                        </dl>
-                    </div>
+                            <div class="tableHeader"><label>Contract #</label></div>
+                            <div class="tableHeader"><label>Site Name</label></div>
+                            <div class="tableHeader"><label>Address</label></div>
+                            <div class="tableHeader"><label>No Of Units</label></div>
+
+                        </div>
+                    </td>
+                </tr> -->
+                <tr>
+                    <td>
+                        <div id="downlodProjectlist" class="alt-list-bg"></div>
+                    </td>
+                </tr>
+                </table>
+            </div>
                     <div> </div>
                     <div> </div>
 <div class="btnDownload"><a data-role="button" class="primary" data-click-on="down" data-i18n="downloadProject.downloadSelected"
-data-click="app.downloadProjectsView.downloadSelected" tabindex="3" loc-text="downloadProjectsView.download">Download</a></div>
+data-click="app.downloadProjectsView.downloadSelected" tabindex="3" loc-text="downloadProjectsView.download"><div class="downloadColor">Download</div></a></div>
                 </div>
-                <script type="text/x-kendo-tmpl" id="downlodProjectTemplate"> 
-                    <dt style="display:none;"><label class="fontSize17">#:ProjectID#</label></dt>
-                    <dd class="lblLeftWidth"><label class="fontSize17">#:ProjectNo#</label></dd>                    
-                    <dd class="lblProjectName"><label class="fontSize17">#:ProjectName#</label></dd>
-                    <dd class="lblLeft"><select class="selectDropDown selectDropDownwidth" projID="#:ProjectID#" onchange="app.downloadProjectsView.changeSurveyType(this)" id="surveyTypeSelect"></select></dd>
-                    <!--<input type="checkbox" data-role="switch"  name="items" data-bind="checked: items" value="#:ProjectID#"></input>-->
-                    <dd circle="yes" class="circleGrey new" projectID="#:ProjectID#"></dd>
+                <script type="text/x-kendo-tmpl" id="downlodProjectTemplate">
+                <div style="display:none;"><label class="fontSize17">#:ProjectID#</label></div>
+                <div class="tableContractNoLeft"><span class="lbltext lbltextBold">Contract \\#</span></div>
+                <div class="tableContractNo"> <span class="lbltext">#:ContractNo#</span> <div circle="yes" class="circleGrey new" projectID="#:ProjectID#"></div>
+                    </div>
+                    <div class="tableContractNoLeft"><span class="lbltextBold">Site Name</span></div>
+                    <div class="tableContractNo"> <span>#:ProjectName#</span></div>
+                    <div class="tableContractNoLeft"><span class="lbltext lbltextBold">Address</span></div>
+                    <div class="tableContractNo"><span>#if(AddressLine1 != null) {##:AddressLine1##}#  #if(City != null) {#,#:City##}#  #if(State != null) {#,#:State##}#  #if(PostalCode != null) {#- #:PostalCode##}# </span></div>
+                    <div class="tableContractNoLeft"><span class="lbltextBold">No Of Units</span></div>
+                    <div class="tableContractNo"><span class="lbltext">#:NoOfUnits#</progress></span></div>
+                    </div>
                 </script>
+
             </form>
         </div>
         <!-- END_CUSTOM_CODE_donloadProjectsView -->

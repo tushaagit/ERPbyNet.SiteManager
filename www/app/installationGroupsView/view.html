@@ -1,0 +1,63 @@
+<div id="installationGroupsViewID" data-role="view" data-title="Installation Groups View" data-layout="main" data-model="app.installationGroupsView" data-show="app.installationGroupsView.onShow"
+    data-after-show="app.installationGroupsView.afterShow" data-before-show="app.installationGroupsView.beforeShow">
+    <!-- START_CUSTOM_CODE_installationGroupsView -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+    <div class="groupHeader-view groupHeight">
+        <section id="content" class="contentinstallationGroupsView installationGroupsViewBottom">
+            <!-- Main content -->
+            <div id="contents" class="main-content">
+                <div class="FirstTblDiv">
+                <table class="fullwidthtable marginTop9">
+                    <tr>
+                        <td>
+                            <div class="listTableBroder" id="projectList"> </div>
+                        </td>
+                    </tr>
+                </table>
+                </div>
+                <table class="fullwidthtable marginTop9">
+                    <!-- <tr>
+                        <td>
+                            <div>
+                                <div class="groupInstallationLable"><label loc-text="installationGroupsView.installationGroup">Installation Group</label></div>
+                                <div class="groupInstallationLable"><label loc-text="installationGroupsView.units">Units</label></div>
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <td>
+                            <div id="installationGroupsList" class="alt-list-bg leftrightPd "> </div>
+                        </td>
+                    </tr>
+                </table>
+                <script type="text/x-kendo-tmpl" id="projectListTemplate">
+                    <div class="tableProjectContentOddLeft"><span loc-text="installationGroupsView.projectId" class="lbltext lbltextBold pdTop5">Project</span> </div>
+                    <div class="tableProjectContentOdd"><span class="lbltext">#: ProjectName #</span></div>
+                    <div class="tableProjectContentEvenLeft"><span class="lbltext lbltextBold" loc-text="installationGroupsView.projectName">Project Name</span></div>
+                    <div class="tableProjectContentEven"><span class="lbltext">#: ContractNo #</span></div>
+                    <div class="tableProjectContentOddLeft"><span class="lbltext lbltextBold" loc-text="installationGroupsView.contractDateTemplate">Contract Date Template</span></div>
+                    <div class="tableProjectContentOdd"><span class="lbltext">#: AddedOn #</span></div>
+                    <div class="tableProjectContentEvenLeft"><span class="lbltext lbltextBold" loc-text="installationGroupsView.percentagePOC">POC %</span></div>
+                    <div class="tableProjectContentovel">
+                    <!-- <progress value="#: PercentComplete #" max="100">#:PercentComplete# %</progress>
+                    <span class="preLbl">#: PercentComplete # % </span> -->
+                    <div class="c100 p#:PercentComplete#">
+                        <span>#:PercentComplete#%</span>
+                        <div class="slice">
+                            <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </script>
+                <script type="text/x-kendo-tmpl" id="installationGroupsListTemplate">
+                    <div class="tableGroupContentLeft groupInstallationLable"><span class="lbltextBold lbltext" loc-text="installationGroupsView.installationGroup">Group</span></div>
+                    <div class="tableGroupContent"><span class="lbltext">#: OpportunityInstallationGroupName #</span></div>
+                    <div class="groupInstallationLable tableGroupContentLeft"><span class="lbltextBold lbltext" loc-text="installationGroupsView.units">Units</span></div>
+                    <div class="tableGroupContent"><span class="lbltext">#: UnitNames #</span></div>
+                </script>
+            </div>
+        </section>
+        <div></div>
+        <!-- END_CUSTOM_CODE_installationGroupsView -->
+    </div>
+</div>

@@ -1,11 +1,11 @@
 'use strict';
-define(['jquery', 'cordova', 'app', 'localizer', 'DALMain', 'WSHandler'],
-    function ($, cordova, app, localizer, DALMain, WSHandler) {
+define(['jquery', 'cordova', 'app', 'DALMain', 'WSHandler'],
+    function ($, cordova, app, DALMain, WSHandler) {
 
         var DALConfigParams = {};
 
         DALConfigParams.dropTable = function () {
-            
+
             var db = DALMain.db;
             var dropTable = "DROP TABLE IF EXISTS ConfigParams";
             db.transaction(function (tx) {
@@ -14,7 +14,7 @@ define(['jquery', 'cordova', 'app', 'localizer', 'DALMain', 'WSHandler'],
         };
 
         DALConfigParams.createTable = function (callback) {
-            
+
             var db = DALMain.db;
             var tblDefinition = "CREATE TABLE IF NOT EXISTS ConfigParams ("
                 + " ConfigID INTEGER, "
@@ -49,7 +49,7 @@ define(['jquery', 'cordova', 'app', 'localizer', 'DALMain', 'WSHandler'],
         };
 
         DALConfigParams.setConfigParams = function (tokenLife, servicePath, mediaServicePath, knowledgebaseID, company, configSaveSucceeded, configSaveFailed) {
-            
+
             var db = DALMain.db;
             var addedOn = new Date();
             db.transaction(function (tx) {
@@ -57,7 +57,7 @@ define(['jquery', 'cordova', 'app', 'localizer', 'DALMain', 'WSHandler'],
                     [],
                     function (tx, configParams) {
                         if (configParams.rows.length > 0) {
-                            
+
                             db.transaction(function (tx) {
                                 tx.executeSql("UPDATE ConfigParams SET TokenLife = ?, ServicePath = ?, MediaServicePath = ?, KnowledgebaseID = ?, Company = ?, UpdatedOn = ?, IsDeleted = ?",
                                     [tokenLife, servicePath, mediaServicePath, knowledgebaseID, company, addedOn, 0],
@@ -66,7 +66,7 @@ define(['jquery', 'cordova', 'app', 'localizer', 'DALMain', 'WSHandler'],
                             });
                         }
                         else {
-                            
+
                             db.transaction(function (tx) {
                                 tx.executeSql("INSERT INTO ConfigParams (TokenLife, ServicePath, MediaServicePath, KnowledgebaseID, Company, AddedOn, UpdatedOn, IsDeleted) VALUES(?, ?, ?, ?, ?, ?, ?, ?) ",
                                     [tokenLife, servicePath, mediaServicePath, knowledgebaseID, company, addedOn, addedOn, 0],
@@ -78,7 +78,7 @@ define(['jquery', 'cordova', 'app', 'localizer', 'DALMain', 'WSHandler'],
                     });
             });
         };
-        
+
         DALConfigParams.getGUID = function () {
             return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
                 var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -125,7 +125,7 @@ define(['jquery', 'cordova', 'app', 'localizer', 'DALMain', 'WSHandler'],
 
             }
                 ,
-                function () { app.notify(localizer.translateText("DALConfigParams.configParamFailed"), true, false); });
+                function () { alert('Failed to get config parameters') });
         };
 
         DALConfigParams.onSuccess = function (tx, results) {
@@ -133,14 +133,14 @@ define(['jquery', 'cordova', 'app', 'localizer', 'DALMain', 'WSHandler'],
         };
 
         DALConfigParams.onError = function (tr, err) {
-            alert(localizer.translateText("DALConfigParams.configError") + " " + err.message);
+            alert("DALConfig error: " + err.message);
 
         };
 
         DALConfigParams.getConfigDetails = function (resultsCallback) {
             var db = DALMain.db;
             try {
-                
+
                 db.transaction(function (tx) {
                     tx.executeSql('SELECT * FROM ConfigParams WHERE isDeleted = 0', [], resultsCallback, DALConfigParams.onError)
                 });

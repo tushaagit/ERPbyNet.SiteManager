@@ -1,0 +1,166 @@
+<div id="activityViewID" data-role="view" data-title="Activty Details View" data-layout="main" data-model="app.activityView" data-show="app.activityView.onShow" data-after-show="app.activityView.afterShow" data-before-show="app.activityView.beforeShow">
+    <div class="groupHeader-view groupHeight">
+        <section id="content" class="contentactivityView activityViewBottom">
+            <!-- <h3 loc-text="activityView.caption">Site Manager</h3> -->
+            <div id="contents" class="main-content">
+                <div class="listTableBroder marginTop1" id="activitySiteDiv"></div>
+                <div class="clear"></div>
+                <div class="listTableBroder marginTop26" id="activityInstallDiv"></div>
+                <div class="clear"></div>
+
+                <div class="FirstTblDiv">
+                <table class="fullwidthtable marginTop1">
+                    <!-- <tr>
+                        <td>
+<div class="innerDiv"><label loc-text="activityView.activity">Activity</label></div>
+                            <div class="innerDiv"><label loc-text="activityView.status">Status</label></div>
+                            <div class="innerDiv"><label loc-text="activityView.start">Start</label></div>
+                            <div class="innerDiv"><label loc-text="activityView.end">End</label></div>
+                            <div class="innerDiv-last">&nbsp;</div>
+                            <div class="innerDiv-last">&nbsp;</div>
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <td>
+                            <div id="activityDiv" class="alt-list-bg leftrightPd"> </div>
+                        </td>
+                    </tr>
+                </table>
+                </div>
+
+
+                <div data-role="popover" id="activity-popover-notes" data-close="app.activityView.onNotesClose" data-popup='{"height": "15em", "width": "17em"}'>
+                    <div data-role="view" data-title="Notes">
+                        <h5 class="noteTitel" loc-text="activityView.notes"><strong>Notes</strong></h5>
+                        <div class="rTableRow">
+                            <div class="rTableCell">
+                                <hidden id="rowGUIDForNotes"></hidden>
+                                <hidden id="indexForNotes"></hidden>
+                                <hidden id="hidAtrriName"></hidden> <textarea id="txtActivityNotes" cols="42" rows="13" class="popNotes"></textarea> </div>
+                        </div>
+                        <div class="rTableRow">
+                            <div class="rTableCell"> <a data-role="button" data-click="app.activityView.saveNotes" loc-text="activityView.save">Save</a> <a data-role="button"
+                            data-click="app.activityView.closeNotes" loc-text="activityView.close">Close</a> </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <script type="text/x-kendo-tmpl" id="activitySiteTemplate">
+                    <div class="mainDiv">
+                         <div class="tableProjectContentOddLeft"><label class="lbltext lbltextBold" loc-text="activityView.project">Project</label></div>
+                         <div class="tableProjectContentOdd"><span  class="lbltext">#: ContractNo #</span></div>
+                    </div>
+                    <div class="mainDiv">
+                        <div class="tableProjectContentEvenLeft"><label class="lbltext lbltextBold" loc-text="activityView.projectName">project Name</label></div>
+                        <div class="tableProjectContentEven"><span class="lbltext">#: ProjectName #</span></div>
+                    </div>
+                    <div class="mainDiv">
+                         <div class="tableProjectContentOddLeft"><label class="lbltext lbltextBold" loc-text="activityView.contractDateTemplate">contract Date Template</label></div>
+                        <div class="tableProjectContentOdd"><span class="lbltext">#: AddedOn #</span></div>
+                    </div>
+                    <div class="mainDiv">
+                        <div class="tableProjectContentEvenLeft"><label class="lbltext lbltextBold" loc-text="activityView.poc">POC%</label></div>
+                        <div class="tableProjectContentovelTwo">
+                        <!-- <progress value="#: PercentComplete #" max="100">#:PercentComplete# %</progress><label class="preLbl">#: PercentComplete # % </label> -->
+                        <div class="c100 p#:PercentComplete#">
+                        <span>#:PercentComplete#%</span>
+                        <div class="slice">
+                            <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+
+                     <div class="mainDiv">
+                      <div class="tableProjectContentOddLeft"><label class="lbltext lbltextBold" loc-text="activityView.installationBilledAmount">Installation Billed Amount</label></div>
+                        <!-- <div class="tableProjectContentOdd"><span class="lbltext">##: installationBilledAmount ##</span></div> -->
+                        <div class="tableProjectContentOdd"><span class="lbltext">43</span></div>
+                    </div>
+                    <div class="mainDiv">
+                      <div class="tableProjectContentEvenLeft"><label class="lbltext lbltextBold" loc-text="activityView.paymentReceived">Payment Received</label></div>
+                        <!-- <div class="tableProjectContentEven"><span class="lbltext">##: paymentReceived ##</span></div> -->
+                        <div class="tableProjectContentEven"><span class="lbltext">No</span></div>
+                    </div>
+
+                    <div class="mainDiv">
+                        <div class="tableProjectContentOddLeft"><label class="lbltext lbltextBold" loc-text="activityView.subConBilledAmount">Sub-Con Billed Amount</label></div>
+                        <!-- <div class="tableProjectContentOdd"><span class="lbltext">##: subConBilledAmount ##</span></div> -->
+                        <div class="tableProjectContentOdd"><span class="lbltext">600</span></div>
+                    </div>
+
+
+
+                </script>
+
+                 <script type="text/x-kendo-tmpl" id="activityInstallTemplate">
+
+                   <div class="mainDiv">
+                        <div class="tableProjectContentOddLeft"><label class="lbltext lbltextBold" loc-text="activityView.installationGroup">Installation Group</label></div>
+                        <div class="tableProjectContentOdd"><span class="lbltext">#: installationGroup #</span></div>
+                    </div>
+                    <div class="mainDiv">
+                        <div class="tableProjectContentEvenLeft"><label class="lbltext lbltextBold" loc-text="activityView.version">Version </label></div>
+                        <div class="tableProjectContentEven"><span class="lbltext">#: version #</span></div>
+                    </div>
+                    <div class="mainDiv">
+                        <div class="tableProjectContentOddLeft"><label class="lbltext lbltextBold" loc-text="activityView.stage">Stage </label></div>
+                        <div class="tableProjectContentOdd"><select data-role="dropdownlist" class="stages widthSelect">#: stage #</select></div>
+                    </div>
+                    <div class="mainDiv">
+                        <div class="tableProjectContentEvenLeft"><label class="lbltext lbltextBold" loc-text="activityView.groupPoc">Group POC</label></div>
+                        <div class="tableProjectContentovelTwo">
+                        <!-- <progress value="#: groupPOC #" max="100">#:groupPOC# %</progress><label class="preLbl">#: groupPOC # % </label> -->
+
+                        <div class="c100 p#:groupPOC#">
+                        <span>#:groupPOC#%</span>
+                        <div class="slice">
+                            <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+
+                      <div class="mainDiv">
+                      <div class="tableProjectContentOddLeft"></div>
+                      <div class="tableProjectContentOdd">
+                        <div class="activityButton"><a class="smallHomeButton" data-role="button" data-icon="camera"></a></div>
+                        <div class="activityButton"><a class="smallHomeButton"  data-rel="popover" href="\\#activity-popover-notes"  data-animated="true" data-role="button" data-icon="notes"></a></div>
+                    </div>
+                    </div>
+
+
+                </script>
+                <script type="text/x-kendo-tmpl" id="activityTemplate">
+
+                    <div class="widthfullDiv activity-tbl-content">
+                    <span class="lbltext lbltextBold">#: activity #</span>
+                    </div>
+                    <div class="leftmain"><label loc-text="activityView.status"><div class="red">Status</label>  </div></div>
+                    <div class="middlemain"><select data-role="dropdownlist" data-statusVal="#: status #"  class="statusSelect topreturn" id="statusSelect"></select></div>
+                    <div class="rightmain activitySmallBtn">
+                    <a class="smallHomeButton" data-role="button" id="#: 'imgs_' + RowGUID #"  data-icon="camera" imggallery="true" data-rowguid="#: RowGUID #" ></a>
+			        <a class="smallHomeButton" data-role="button" data-rel="popover" href="\\#activity-popover-notes"  data-animated="true" id="#: 'notes_' + RowGUID #"  data-icon="notes" data-rowguid="#: RowGUID #" ></a></div>
+                    <!-- <a class="smallHomeButton" data-role="button" id="#: 'photo_' + RowGUID #"  data-icon="film" imggallery="true" data-activity="#: activity #" data-rowguid="#: RowGUID #" ></a> -->
+
+                    <div class="leftmain dateAlign"><label loc-text="activityView.start"><div class="red">Start Date</label> </div> </div>
+                    <div class="middlemain dateAlignmiddle"><span class="textSize">#: start #</span> </div>
+                    <div class="rightmain"><input type="text" readonly class="actualCalendar inputactivity"> </div>
+                    <div class="heightAuto">&nbsp;</div>
+
+                    <div class="leftmain dateAlign"><label loc-text="activityView.end"><div class="red">End Date</label></div> </div>
+                    <div class="middlemain dateAlignmiddle"> <span class="textSize">#: end #</span> </div>
+                    <div class="rightmain"><input type="text" readonly class="actualCalendar inputactivity"> </div>
+                    <div class="heightAuto">&nbsp;</div>
+
+
+                </script>
+
+            </div>
+        </section>
+    </div>
+</div>

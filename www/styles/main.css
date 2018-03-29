@@ -2,14 +2,20 @@
     float: left;
     margin-right: 15px;
 }
-
+.leftmain{ margin:-4px 0 0 0px !important; padding:0px; float:left; width:32%; height:38px !important; }
+.rightmain{ margin:0px; padding:0px; width:34%; height: 51px !important; float:right !important; }
+.middlemain{ margin:0px; padding:0px; float:left; width:32%; height: 51px !important;}
+.abbc { height: 178px !important;}
+.topreturn{top:-1px !important;}
 #kendoUiMobileApp .block {
     display: block;
     margin: 1em;
     padding: 1em;
     text-align: center;
 }
-
+.dateAlign{margin:8px 0 0 0px !important; padding:0px; float:left;}
+.dateAlignmiddle{ padding:21px 0px 21px 0px !important; color:#333333;}
+.red{ color:#333333;}
 #kendoUiMobileApp .button-group,
 #kendoUiMobileApp .icon-group {
     width: 100%;
@@ -20,6 +26,9 @@
 
 #kendoUiMobileApp .button-group {
     table-layout: fixed;
+    padding: 0px;
+    margin: -14px 0 0 0px;
+
 }
 
 ​​​​​#appVersion{
@@ -209,11 +218,16 @@
 }
 
 .valid {
-    color: red;
+    color:red;
+    margin: -20px 0 20px 17px;
 }
 
 .invalid {
     color: red;
+    padding: -13px;
+    margin:-23px 0 20px 15px;
+    padding: 0px;
+    float: left;
 }
 
 #fieldlist li input[type="checkbox"] {
@@ -231,10 +245,74 @@ span.k-widget.k-tooltip-validation {
     box-shadow: none;
     color: red;
 }
+.km-flat .km-list>li {
+    border-style: solid;
+    border-width: 0 0 0px 0;
+background: rgba(255,255,255,1);
+background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 47%, rgba(237,237,237,1) 100%);
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(255,255,255,1)), color-stop(100%, rgba(237,237,237,1)));
+background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 47%, rgba(237,237,237,1) 100%);
+background: -o-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 47%, rgba(237,237,237,1) 100%);
+background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 47%, rgba(237,237,237,1) 100%);
+background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 47%, rgba(237,237,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
 
+
+}
+#kendoUiMobileApp .button-group .km-button {
+    display: table-cell;
+    padding: .6em .8em;
+    margin: 1em 0;
+    color:#FFF !important;
+}
 .k-tooltip-validation .k-warning {
     display: none;
 }
 
+.tableGroupContentLeft{float:left; margin:0px; padding:10px 0px 10px 2px; width:25%; color:#000000 !important;}
 
+.tableGroupContent{float:left; margin:0px; padding:10px 0px 10px 2px; width:75%; color:#000000 !important;}
+
+.groupInstallationLable{ float:left; margin:0px; padding:10px 10px 10px 2px; color:#000000 !important; text-align:left;}
+
+.marginTop9{width:100%; margin-top:9px;}
+
+.marginTop26 {margin-top:26px !important;}
+
+.tableBorder{border:1px solid #889bb9 !important;}
+.widthSelect{ width:30% !important; top:33% !important; padding:0px;}
+.listTable{border:1px solid #889bb9 !important; margin-top:0px; padding:0 0 0 2px;}
+.listTableBroder{
+    margin: -20px -3px 0px -12px;
+    border: 0px;
+    border-bottom:0px;
+    border: none !important;}
+
+
+.marginTop{ margin-top:9px;}
+.FirstTblDiv{    overflow-x:auto;    margin-top:20px;}
+
+/*.innerDiv{    float:left;     background: linear-gradient(rgb(130, 142, 160) 0px, rgb(74, 96, 128) 36%, rgb(93, 107, 130) 73%, rgb(90, 113, 143) 100%);     margin:0px;     padding:10px;     width: 20%;    color:#FFFFFF;}
+
+.innerDiv-last{    float:left;     background: linear-gradient(rgb(130, 142, 160) 0px, rgb(74, 96, 128) 36%, rgb(93, 107, 130) 73%, rgb(90, 113, 143) 100%);     margin:0px;     padding:10px;     width: 10%;    color:#FFFFFF;}*/
+
+.innerDiv{ float:left; background-color:#8b8787;  margin:0px;     padding:10px;     width: 20%;    color:#FFFFFF;}
+
+.innerDiv-last{    float:left;    background-color:#8b8787;  margin:0px;     padding:10px;     width: 10%;    color:#FFFFFF;}
+
+.subDivEven{ color:#000000 !important; background-color:#d7dde1; height:50px; float:left; margin:0px; padding:8px 0px 5px 10px; width:50%;}
+.subDivOdd{   color:#000000 !important; height:50px; float:left; margin:0px; padding:8px 0px 5px 10px; width:50%;}
+.subDivEvenPadding{ color:#000000 !important; background-color:#d7dde1; height:50px; float:left; margin:0px; padding:0px 0px 5px 10px; width:50%;}
+.subBtnDivOdd{   color:#000000 !important; height:50px; float:left;  margin: 0 0 0 -12px; padding:8px 0px 5px 0x; width:50%;}
+.clear{    clear:left;}
+.mainDiv{    width:100%;}
+.activity-tbl-content{ text-align: center; margin:0px;  padding: 0px 0px 5px 0px; width:100%; height:50px;}
+.activity-tbl-contentHalf{    float:left;     margin:0px;     padding:15px 0px 5px 0px;   width:50%; }
+
+.km-widget input[readonly], .km-widget input[type="image"], .km-widget #statusSelect:not([multiple]) {    user-select: none;}#statusSelect:not([size]):not([multiple]), #statusSelect[size="0"], #statusSelect[size="1"] {    background-color: buttonface;}#statusSelect, #statusSelect[size="0"], #statusSelect[size="1"] {    border-radius: 0px;    border-color: rgb(169, 169, 169);}#statusSelect:not(:-internal-list-box) {    overflow: visible !important;}#statusSelect {    -webkit-appearance: menulist;    box-sizing: border-box;    align-items: center;    white-space: pre;    -webkit-rtl-ordering: logical;    color: #333 !important;  cursor: default;    border-width: 1px;    border-style: solid;    border-color: #fff;    border-image: initial;    width:80%;    right:0px !important;}
+#statusSelect {    border-radius: 5px; width:50% !important;}
+input, textarea, #statusSelect, button {    text-rendering: auto;    color: initial;    letter-spacing: normal;    word-spacing: normal;    text-transform: none;    text-indent: 0px;    text-shadow: none;    display: inline-block;    text-align: start;    margin: 0em 0em 0em 0em;    font: 13.3333px Arial;}
+input, textarea, #statusSelect, button, meter, progress {    -webkit-writing-mode: horizontal-tb;}/*****************************/
+
+.actualCalendar{   border-radius: 5px; width:30% !important; }
 /* END_CUSTOM_CODE_kendoUiMobileApp */

@@ -18,7 +18,11 @@ define(['jquery', 'cordova', 'kendo', 'app', 'localizer', 'WSHandler', 'DALProje
             afterShow: function (e) {
                 mediaGalleryView.mediaType = e.view.params.mediaType;
                 var uid = e.view.params.RowGUID;
-                if (e.view.params.SetName != undefined) {
+                if (e.view.params.activity != undefined) {
+                    $('#pageTitle').text(e.view.params.ProjectName + " > " + e.view.params.BuildingName + " > " + e.view.params.GroupName + " > " + e.view.params.SetName);
+                    $('#entityName').val(e.view.params.activity); // To identify the current Set/Group/Building/Project name
+                }
+                /*if (e.view.params.SetName != undefined) {
                     $('#pageTitle').text(e.view.params.ProjectName + " > " + e.view.params.BuildingName + " > " + e.view.params.GroupName + " > " + e.view.params.SetName);
                     $('#entityName').val(e.view.params.SetName); // To identify the current Set/Group/Building/Project name
                 } else if (e.view.params.GroupName != undefined) {
@@ -30,7 +34,7 @@ define(['jquery', 'cordova', 'kendo', 'app', 'localizer', 'WSHandler', 'DALProje
                 } else if (e.view.params.ProjectName != undefined) {
                     $('#pageTitle').text(e.view.params.ProjectName);
                     $('#entityName').val(e.view.params.ProjectName);
-                }
+                }*/
 
                 mediaGalleryView.init(uid, e.view.params.mediaType);
             }

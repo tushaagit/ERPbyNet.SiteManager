@@ -1,6 +1,6 @@
 'use strict';
-define(['jquery', 'cordova', 'app', 'localizer', 'DALMain', 'WSHandler'],
-    function ($, cordova, app, localizer, DALMain, WSHandler) {
+define(['jquery', 'cordova', 'app', 'DALMain', 'WSHandler'],
+    function ($, cordova, app, DALMain, WSHandler) {
 
         var DALErrorLog = {};
 
@@ -49,7 +49,7 @@ define(['jquery', 'cordova', 'app', 'localizer', 'DALMain', 'WSHandler'],
 
 
         DALErrorLog.onError = function (tr, err) {
-            alert(localizer.translateText("DALErrorLog.error") + " " + err.message);
+            alert("DALErrorLog error: " + err.message);
 
         };
 
@@ -65,6 +65,6 @@ define(['jquery', 'cordova', 'app', 'localizer', 'DALMain', 'WSHandler'],
             }
         };
 
-        
+
         return DALErrorLog;
     });

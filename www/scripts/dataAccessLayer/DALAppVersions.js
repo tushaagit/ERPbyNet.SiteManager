@@ -10,9 +10,9 @@ define(['jquery', 'cordova', 'app', 'DALMain'], function($, cordova, app, DALMai
     }
 
     DALAppVersions.fail = function(tx, err){
-            console.log(err);            
+            console.log(err);
         };
-    
+
 
 
     DALAppVersions.createTable = function(callback)
@@ -39,13 +39,13 @@ define(['jquery', 'cordova', 'app', 'DALMain'], function($, cordova, app, DALMai
             var db = DALMain.db;
             var sqlCommand = 'SELECT MAX(VersionId) AS versionId FROM AppVersions';
             db.transaction(function(tx){
-                tx.executeSql(sqlCommand,[], function(tx, version){ 
-                        if(version.rows.length > 0) 
+                tx.executeSql(sqlCommand,[], function(tx, version){
+                        if(version.rows.length > 0)
                             callback(version.rows.item(0).versionId);
                 }, DALAppVersions.fail);
             });
         });
-        
+
     };
 
     DALAppVersions.addVersionNumber = function(versionNo, callback)
@@ -77,7 +77,7 @@ define(['jquery', 'cordova', 'app', 'DALMain'], function($, cordova, app, DALMai
             var sqlCommand = "Select * FROM AppVersions WHERE VersionId = ?";
             db.transaction(function(tx){
                 tx.executeSql(sqlCommand, [versionId], callback, DALAppVersions.fail);
-            }); 
+            });
         });
     };
 

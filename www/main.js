@@ -2,6 +2,7 @@ requirejs.config({
   waitSeconds: 120,
   paths: {
     jquery: "kendo/js/jquery.min",
+    jqueryui: "kendo/js/jquery-ui",
     cordova: "cordova",
     async: "scripts/lib/async",
     kendo: "kendo/js/kendo.mobile.min",
@@ -21,17 +22,16 @@ requirejs.config({
     fileHandler: "scripts/fileHandler",
     cookieManager: "scripts/cookieManager",
     dropdown: "scripts/lib/jquery.dd.min",
+    mediaHandler: "scripts/mediaHandler",
 
     trialManager: "scripts/businessLayer/trialManager",
     authenticationManager: "scripts/businessLayer/authenticationManager",
     projectManager: "scripts/businessLayer/projectManager",
+    installationGroupsManager: "scripts/businessLayer/installationGroupsManager",
     buildingManager: "scripts/businessLayer/buildingManager",
     groupManager: "scripts/businessLayer/groupManager",
     setManager: "scripts/businessLayer/setManager",
-    productManager: "scripts/businessLayer/productManager",
     dataSyncStatusManager: "scripts/businessLayer/dataSyncStatusManager",
-    attributeManager: "scripts/businessLayer/attributeManager",
-    attributeValueManager: "scripts/businessLayer/attributeValueManager",
     commonScriptManager: "scripts/businessLayer/commonScriptManager",
 
     networkInfo: "scripts/networkInfo",
@@ -48,12 +48,14 @@ requirejs.config({
     DALAppVersions: "scripts/dataAccessLayer/DALAppVersions",
     DALConfigParams: "scripts/dataAccessLayer/DALConfigParams",
     DALErrorLog: "scripts/dataAccessLayer/DALErrorLog",
-
+    DALInstallationGroups: "scripts/dataAccessLayer/DALInstallationGroups",
     dbInitView: "app/dbInitView/index",
     trialExpired: "app/trialExpired/index",
     loginView: "app/loginView/index",
     homeView: "app/homeView/index",
     downloadProjectsView: "app/downloadProjectsView/index",
+    installationGroupsView:  "app/installationGroupsView/index",
+    activityView:  "app/activityView/index",
     projectView: "app/projectView/index",
     mediaGalleryView: "app/mediaGalleryView/index",
     imageView: "app/imageView/index",
@@ -82,8 +84,8 @@ requirejs.config({
 
 
 
-require(['app', 'cordova', 'kendo', 'fileHandler', 'loginView', 'homeView', 'trialManager', 'trialExpired', 'aboutView', 'dbInitView'],
-  function(app, cordova, kendo, fileHandler, loginView, homeView, trialManager, trialExpired, aboutView, dbInitView) {
+require(['jquery', 'jqueryui', 'app', 'cordova', 'kendo', 'fileHandler', 'loginView', 'homeView', 'trialManager', 'trialExpired', 'aboutView', 'dbInitView', 'downloadProjectsView', 'installationGroupsView', 'activityView', 'mediaHandler'],
+  function(jquery, jqueryui, app, cordova, kendo, fileHandler, loginView, homeView, trialManager, trialExpired, aboutView, dbInitView, downloadProjectsView, installationGroupsView, activityView, mediaHandler) {
     window.APP = app;
     if (kendo.mobileOs) {
       document.addEventListener('deviceready', function() {

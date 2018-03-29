@@ -17,6 +17,7 @@ define(['jquery', 'cordova', 'config', 'DALMain', 'networkInfo', 'cookieManager'
                 DALConfigParams.createTable(function () {
                     //Load basic configuration parameters
                     config.loadConfiguration(function () {
+                      alert('load');
                         app.setInitialPage();
                         networkInfo.init();
                         app.showNetworkInfo();//call showNetworkInfo function.
@@ -66,7 +67,7 @@ define(['jquery', 'cordova', 'config', 'DALMain', 'networkInfo', 'cookieManager'
                 alert(e);
             }
         };
-        app.setInitialPage = function () {
+        app.setInitialPage = function () { alert('initial');
             DALHelper.doesProjectsTableExists(app.isDBSetupRequired);
         };
 
@@ -77,7 +78,7 @@ define(['jquery', 'cordova', 'config', 'DALMain', 'networkInfo', 'cookieManager'
                 trialManager.isTrialStillAvailable(function (trialAvailable) {
                     if (trialAvailable) {
                         var chkLogin = app.isUserAuthenticated();//call for valid user check method in app page
-
+                        alert('chklogin');
                         if (chkLogin == true) {//check for valid user session
                             $("#loggedInUser").text(localizer.translateText("app.signout") + " (" + app.getLoggedInUserName() + ")");
                             $("#lblUserName").html(app.getLoggedInUserName());

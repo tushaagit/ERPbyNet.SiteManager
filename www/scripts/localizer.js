@@ -1,12 +1,12 @@
 'use strict';
 
-define(['jquery', 'cordova', 'en', 'en_US', 'hi_IN', 'ja_JP', 'pt'],
+define(['jquery', 'cordova', 'en', 'en_US'],
        function ($, cordova, en, en_US, hi_IN, ja_JP, pt) {
-    
+
 	var localizer = {};
     localizer.browserLanguage = navigator.language || navigator.userLanguage; //Get the browser or device language
-    
-    
+
+
    	localizer.dictionary = en; //Default dictionary
     //alert(localizer.browserLanguage);
     if( localizer.browserLanguage === 'en-US'){
@@ -27,7 +27,7 @@ define(['jquery', 'cordova', 'en', 'en_US', 'hi_IN', 'ja_JP', 'pt'],
     {
         localizer.dictionary = pt;
     }
-    
+
  	localizer.translate = function(){
         var elements = $('[loc-text]');
     	elements.each(function(index){
@@ -36,12 +36,12 @@ define(['jquery', 'cordova', 'en', 'en_US', 'hi_IN', 'ja_JP', 'pt'],
             var locText = '';
             for(var i=0; i<partText.length; i++)
                 {
-                    locText = locText+localizer.dictionary[partText[i]] + " ";  
-                }   
+                    locText = locText+localizer.dictionary[partText[i]] + " ";
+                }
             locText = locText.substring(0, locText.length-1);
             $(this).text(locText);
         });
-        
+
         var elements = $('[loc-ErrorText]');
     	elements.each(function(index){
       		var orgText = $(this).attr('loc-ErrorText');
@@ -49,13 +49,13 @@ define(['jquery', 'cordova', 'en', 'en_US', 'hi_IN', 'ja_JP', 'pt'],
             var locText = '';
             for(var i=0; i<partText.length; i++)
                 {
-                    locText = locText+localizer.dictionary[partText[i]] + " ";  
-                }   
+                    locText = locText+localizer.dictionary[partText[i]] + " ";
+                }
             locText = locText.substring(0, locText.length-1);
             $(this).attr("validationMessage", locText);
         });
     };
-    
+
     localizer.translateText = function(textKey){
         return(localizer.dictionary[textKey]);
     };
@@ -70,6 +70,6 @@ define(['jquery', 'cordova', 'en', 'en_US', 'hi_IN', 'ja_JP', 'pt'],
         }
         return translatedText;
     };
-    
+
     return localizer;
 });

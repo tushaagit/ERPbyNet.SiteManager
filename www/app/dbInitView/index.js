@@ -1,10 +1,10 @@
 'use strict';
 define(['jquery', 'cordova', 'kendo', 'app', 'fileHandler', 'localizer', 'cookieManager', 'DALMain', 'DALAuthTokens', 'DALProjects', 'DALBuildings',
     'DALGroups', 'DALSets', 'DALDataSyncStatus', 'WSHandler', 'dataSyncStatusManager',
-    'DALAppVersions', 'config', 'DALErrorLog', 'DALConfigParams'],
+    'DALAppVersions', 'config', 'DALErrorLog', 'DALConfigParams', 'DALInstallationGroups'],
     function ($, cordova, kendo, app, fileHandler, localizer, cookieManager, DALMain, DALAuthTokens, DALProjects, DALBuildings,
         DALGroups, DALSets, DALDataSyncStatus, WSHandler, dataSyncStatusManager,
-        DALAppVersions, config, DALErrorLog, DALConfigParams) {
+        DALAppVersions, config, DALErrorLog, DALConfigParams, DALInstallationGroups) {
 
         var dbInitView = kendo.observable({
             beforeShow: function (e) {
@@ -61,6 +61,7 @@ define(['jquery', 'cordova', 'kendo', 'app', 'fileHandler', 'localizer', 'cookie
             DALBuildings.dropTable();
             DALGroups.dropTable();
             DALSets.dropTable();
+            DALInstallationGroups.dropTable();
 
             DALDataSyncStatus.dropTable();
 
@@ -78,11 +79,13 @@ define(['jquery', 'cordova', 'kendo', 'app', 'fileHandler', 'localizer', 'cookie
                                 DALSets.createTable(function () {
                                     DALDataSyncStatus.createTable(function () {
                                         DALErrorLog.createTable(function () {
+                                         DALInstallationGroups.createTable(function () {
                                           dataSyncStatusManager.setup(function () {
                                               app.notify(localizer.translateText("setup.dbSetupCompMsg"), false, true);
                                               app.notify(localizer.translateText("setup.smplDataPopltngMsg"), false, true);
                                               dbInitView.populateSampleData();
                                             });
+                                          });
                                         });
                                     });
                                 });
